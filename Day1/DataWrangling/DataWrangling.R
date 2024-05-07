@@ -6,11 +6,16 @@
 
 # 1. Getting Set up Importing Data ==============
 ## 1.1. Packages needed--------------
-library(tidyverse)
+install.packages("fuzzyjoin")
+
+library(tidyverse)# The tidyverse is a collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.https://www.tidyverse.org/
 library(data.table)
+library(reshape2)#it is not deprecated should not be tidyr?
+library(fuzzyjoin)#The fuzzyjoin package is a variation on dplyr’s join operations that allows matching not just on values that match between columns, but on inexact matching https://cran.r-project.org/web/packages/fuzzyjoin/readme/README.html
 
 
-# We are going to start with fixing and setting up the unstructured dataset i.e. the statistical accounts of scotland
+
+# We are going to start with fixing and setting up the unstructured dataset i.e. the statistical accounts of Scotland
 
 
 ## 1.2. Import the data------------
@@ -105,7 +110,7 @@ write_csv(Parish,"Day1/DataWrangling/Export/Parishes.csv")
 
 #ok now that we have cleaned the unstructured data let's do some work on the structured dataset
 # Create your dataframe
-Distilleries<-read.csv("scotches.csv")
+Distilleries<-read.csv("Day1/DataWrangling/data/scotches.csv")
 
 # Function to get the column names where the value is 1 or more, separated by comma
 get_info <- function(row, column_names) {
@@ -132,25 +137,19 @@ Distilleries$palate <- apply(Distilleries[, Palate], 1, get_info, column_names =
 Distilleries$fin <- apply(Distilleries[, Fin], 1, get_info, column_names = Fin)
 Distilleries$area <- apply(Distilleries[, Area], 1, get_info, column_names = Area)
 
-ScotDist<-Distilleries[,c(1:2,71:76,86:95)]
+ScotDist<-Distilleries[,c(1:2,71:76,86:94)]
 #Remove all the .1.2 from repeating column names
 ScotDist <- mutate(ScotDist, across(where(is.character), ~gsub(".1|.2", "", .)))
 
 
 #Export the data
 
-write_csv(ScotDist, "ScotDistilleries.csv")
-
-library(tidyverse)
-library(readr)
-
-library(reshape2)
-library(stringr)#
-library(fuzzyjoin)
+write_csv(ScotDist, "Day1/DataWrangling/Export/ScotDistilleries.csv")
 
 
-scotch_review <- read_csv("scotch_review_manual_clean.csv")
-Operating_whisky_distilleries <- read_csv("List_of_whisky_distilleries_in_Scotland_manual_clean.csv")
+
+scotch_review <- read_csv("Day1/DataWrangling/data/scotch_review_manual_clean.csv")
+Operating_whisky_distilleries <- read_csv("Day1/DataWrangling/data/List_of_whisky_distilleries_in_Scotland_manual_clean.csv")
 
 
 ## Step 1 - tidy
@@ -200,7 +199,7 @@ df_2 <- df %>% group_by(name) %>%
   distinct() %>% # There are just 2 duplicates in the data, so simpler to remove as apposed to doing anything more sophisticated, as likely just human error.
   select(-n)
 #filter(n_Distillery > 1) %>%
-na.omit()
+
 
 
 summary(duplicated(df_2))    
@@ -214,4 +213,4 @@ hist(df_2$ABV)
 #overall summary view
 summary(df_2)
 
-write.csv(df_2, "Whisky_distillery_data.csv")  
+write.csv(df_2, "Day1/DataWrangling/Export/Whisky_distillery_data.csv")  

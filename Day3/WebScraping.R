@@ -239,6 +239,19 @@ length(BottleDistFlat)
 BottleDistFlat<-unlist(BottleDistFlat)
 
 
+library(tidyverse)
+library(rvest)
+# now we get the average score per bottle
+get.bottle.rate <- function(x){
+  rate <- read_html(x) %>%
+    html_node('.happy') %>%
+    html_text()
+}
+
+BottleRate<- map(FullLinksBottle, get.bottle.rate)
+
+head(BottleRate)
+
 
 #get ABV
 
@@ -268,6 +281,9 @@ cleanedBottleABV<-as.numeric(cleanedBottleABV)
 
 
 FullDataSet<- data.frame(AVB=cleanedBottleABV, Distillery= BottleDistFlat, BottleName=WithBottleNames$BottleName, Reviews= WithBottleNames$review)
+
+
+
 
 
 
