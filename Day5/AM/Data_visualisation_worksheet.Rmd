@@ -12,9 +12,11 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+## These are some recomeneded packages. Feel free to add more!
 library(tidyverse)
 library(ggpubr)
 library(ggthemes)
+library(gghalves)
 library(ggsci) # color palletes for journals. Warning - this pallete drops NA's
 library(wesanderson) # Wes Anderson inspired color pallete. 
 library(extrafont) #additional fonts
