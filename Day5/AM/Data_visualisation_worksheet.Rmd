@@ -33,7 +33,7 @@ For example, you could:
 * Assign one member to a conceptual/statistical role.
 * Assign another member to the Rmarkdown design (i.e., Document formatting, tabsetting to create interactive features...).
 * Another member to the aesthetic/theme design role of the plot. 
-* Or mix and match the roles!
+* Or mix, match and be creative with the roles!
 
 ### Useful Resources 
 
