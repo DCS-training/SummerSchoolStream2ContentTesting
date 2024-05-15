@@ -34,31 +34,31 @@ nchar(CorpusStat[1:10])
 # Check number of tokens in the first 10 documents
 ntoken(CorpusStat[1:10]) 
 
-# Create a new vector with tokens for all articles and store the vector as a new data frame with three columns (Ntoken, title)
+# Create a new vector with tokens for all articles and store the vector as a new data frame with four columns (Ntoken, title, Area, Parish)
 NtokenStats<-as.vector(ntoken(CorpusStat))
 TokenScotland <-data.frame(Tokens=NtokenStats, title=Parish$title, Area=Parish$Area, Parish=Parish$Parish)
 
-# Now we want to see how much material we have for each area. We can do that through pipes
+# Now we want to explore the parish data by geographic area. We can do that with pipes:
 BreakoutScotland<- TokenScotland %>%
   group_by(Area)%>%
   summarize(NReports=n(), MeanTokens=round(mean(Tokens)))
 
-# Now we can plot the trends. This is done through the use of the ggplot package that is a very handy package that will allow you to print a very big variety of graphs
+# We can now plot the trends using gpplot:
 
 ggplot(BreakoutScotland, aes(x=Area, y=NReports))+ # Select data set and coordinates we are going to plot
-  geom_point(aes(size=MeanTokens, fill=MeanTokens),shape=21, stroke=1.5, alpha=0.9, colour="black")+ # Which graph I want 
-  labs(x = "Areas", y = "Number of Reports", fill = "Mean of Tokens", size="Mean of Tokens", title="Number of Reports and Tokens in the Scotland Archive")+ # Rename labs and title
-  scale_size_continuous(range = c(5, 15))+ # Resize the dots to be bigger
+  geom_point(aes(size=MeanTokens, fill=MeanTokens),shape=21, stroke=1.5, alpha=0.9, colour="black")+ # Type of graph I want 
+  labs(x = "Areas", y = "Number of Reports", fill = "Mean of Tokens", size="Mean of Tokens", title="Number of Reports and Tokens in the Scotland Archive")+ # Rename x/y labels and title
+  scale_size_continuous(range = c(5, 15))+ # Resize the dots (enlarge)
   geom_text(aes(label=MeanTokens))+ # Add the mean of tokens in the dots
   scale_fill_viridis_c(option = "plasma")+ # Change the colour coding
   theme_bw()+ # B/W Background
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1), legend.position = "bottom")+ # Rotate labels of x and move them slightly down. Plus move the position to the bottom 
-  guides(size = "none") # Remove the Size from the Legend 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1), legend.position = "bottom")+ # Rotate x-axis labels and move them slightly down; move legend to the bottom 
+  guides(size = "none") # Remove the size from the legend 
 
 # Discussion question: what is the graph telling us about our data?
 
-# 4. Getting the data ready for text analysis ############
-# Now, we can tokenise the corpus, which will break the textual data into separate words grouped by document. We are also removing symbols, URLs, and punctuation.
+# 4. Preparing the data for text analysis ############
+# Now, we can tokenise the corpus, which will break the textual data into separate words grouped by document. We are also remove symbols, URLs, and punctuation.
 Report_tokens <- quanteda::tokens(Parish$text, 
                                   remove_symbols=TRUE, 
                                   remove_url=TRUE, 
@@ -81,15 +81,15 @@ Report_tokens <-tokens_remove(Report_tokens, c(stopwords("english"), "statistica
 # Convert to document-feature matrix (aka "dfm")
 dfm_Report <- dfm(Report_tokens)
 
-# Plot a wordcloud
+# Plot a word cloud
 textplot_wordcloud(dfm_Report,
                    max_words=100,
                    color='black')
 
-# Improving the WordCloud
+# Improving the word cloud
 textplot_wordcloud(dfm_Report, rotation = 0.25,
                    max_words=50,
-                   color = rev(RColorBrewer::brewer.pal(10, "Spectral")))#adding some colour and rotate results
+                   color = rev(RColorBrewer::brewer.pal(10, "Spectral")))#adding some colour and rotating results
 
 
 # 8. Further Cleaning =====================
@@ -108,7 +108,7 @@ lemma_dfm <- dfm(lemmas)
 topfeatures(stem_dfm, 20)
 topfeatures(lemma_dfm, 20)
 
-# Discussion: What can we observe about stemming and lemmatization? which method (if any) is better for answering our research questions, and why?
+# Discussion: What can we observe about stemming and lemmatization? Which method (if any) do you prefer, and why?
 
 # Make a word cloud of the lemmatized results:
 textplot_wordcloud(lemma_dfm, rotation = 0.25,
@@ -126,13 +126,10 @@ data.frame(list(term = names(top_keys), frequency = unname(top_keys))) %>% # Cre
   theme(axis.text.x=element_text(angle=90, hjust=1))
 
 
-
-
-
 # 6 Keywords in Context #######################
 # keyword search examples (using kwic aka "keyword in context")
 Witches<-kwic(Report_tokens , #on what
-           c("witch", "spell", "enchantemt","magic"), # Regex pattern
+           c("witch", "spell", "enchantment","magic"), # Regex pattern
            valuetype = "regex",# use Regex to do so
            window = 10)
 
@@ -140,21 +137,21 @@ Witches<-kwic(Report_tokens , #on what
 # Add them back to our main data set 
 TokenScotland<-rownames_to_column(TokenScotland, var = "ID")
 
-# Saving Row names as variable
+# Save row names as variables
 TokenScotland$ID<-paste0("text",TokenScotland$ID)#add text to the ID
-# Merge the two data set
+# Merge the two datasets
 Merged <-merge(Witches,TokenScotland, by.x="docname", by.y="ID")
-# Merge the before and after the keyword
+# Merge the text before and after the keyword
 Merged$NewText<-paste0(Merged$pre, Merged$post)
-# Now I want to see in which area of Scotland there are more mention of tree grass and pasture. I can do this by using pipes again
+# Now I want to see which area of Scotland contains the most keyword matches for 'witch,' 'spell,' 'enchantment,' or 'magic.' I can do this by using pipes again:
 BreakoutWitches<- Merged %>%
   group_by(Area,pattern)%>%
   summarize(NMention=n())
 
-# Now we can plot the trends. Again I am using ggplot to do so
+# Now we can plot the trends. Again, I am using ggplot to do so.
 ggplot(BreakoutWitches, aes(x=Area, y=NMention, colour=pattern))+ # Select data set and coordinates we are going to plot
   geom_point(aes(alpha=NMention), size=5)+ # Which graph I want 
-  labs(x = "Areas", y = "Number of Mention", colour = "Keyword matching", title="Number of Mention of green in the Scotland Archive")+ # Rename labs and title
+  labs(x = "Areas", y = "Number of Keywords", colour = "Keyword matching", title="Witchcraft Keywords in the Scotland Archive")+ # Rename labs and title
   facet_wrap(~pattern, ncol=1)+
   theme_bw()+ # B/W Background
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1), legend.position = "bottom")+ # Rotate labels of x and move them slightly down. Plus move the position to the bottom 
@@ -162,20 +159,20 @@ ggplot(BreakoutWitches, aes(x=Area, y=NMention, colour=pattern))+ # Select data 
   scale_alpha(guide = 'none') #Remove alpha from legend
 
 
-#Now let's do the same on whisky
+#Now let's do the same for keywords related to whisky:
 Whisky<-kwic(Report_tokens , #on what
              c("drunk","intemperance","wisky|whisky|whiskey|whysky", "alembic", "spirit"), # Regex pattern
              valuetype = "regex",# use Regex to do so
              window = 30)
 
 
-# Merge the two data set
+# Merge the two datasets
 Merged2 <-merge(Whisky,TokenScotland, by.x="docname", by.y="ID")
-# Merge the before and after the keyword
+# Merge the text before and after the keyword
 Merged2$NewText<-paste(Merged2$pre,Merged2$keyword, Merged2$post)
 
 
-# Now I want to see in which area of Scotland there are more mention of tree grass and pasture. I can do this by using pipes again
+# Now I want to see which area of Scotland in the dataset contains the most whisky keywords. I will use pipes to arrange the dataset by area:
 BreakoutWhisky<- Merged2 %>%
   group_by(Area,pattern)%>%
   summarize(NMention=n())
@@ -185,7 +182,7 @@ BreakoutWhisky<- Merged2 %>%
 # Now we can plot the trends. Again I am using ggplot to do so
 ggplot(BreakoutWhisky, aes(x=Area, y=NMention, colour=pattern))+ # Select data set and coordinates we are going to plot
   geom_point(aes(alpha=NMention), size=5)+ # Which graph I want 
-  labs(x = "Areas", y = "Number of Mention", colour = "Keyword matching", title="Number of Mention of whisky in the Scotland Archive")+ # Rename labs and title
+  labs(x = "Areas", y = "Number of Keywords", colour = "Keyword matching", title="Whisky Keywords in the Scotland Archive")+ # Rename labs and title
   facet_wrap(~pattern, ncol=1)+
   theme_bw()+ # B/W Background
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1), legend.position = "bottom")+ # Rotate labels of x and move them slightly down. Plus move the position to the bottom 
@@ -198,8 +195,8 @@ spirits<-subset(Merged2, keyword=="spirit")
 
 spirits$NewText
 
-# there is a problem spirit can be booze but can be holy spirit and spirit of a men
-# for now let's just remove it from the pool 
+# There is a problem: a spirit can be booze but can also refer to the holy spirit or the human spirit!
+# For now, let's just remove it from the pool 
 
 #Now let's do the same on whisky
 Whisky<-kwic(Report_tokens , #on what
@@ -208,23 +205,23 @@ Whisky<-kwic(Report_tokens , #on what
              window = 30)
 
 
-# Merge the two data set
+# Merge the two datasets
 Merged3<-merge(Whisky,TokenScotland, by.x="docname", by.y="ID")
 # Merge the before and after the keyword
 Merged3$NewTextWithKeyword<-paste(Merged3$pre,Merged3$keyword, Merged3$post)
 Merged3$NewText<-paste(Merged3$pre, Merged3$post)
 
 
-# Now I want to see in which area of Scotland there are more mention of tree grass and pasture. I can do this by using pipes again
+# Now I want to see in which area of Scotland there are more instances of the keywords to see if anything has changed after removing "spirit." I can do this by using pipes again:
 BreakoutWhisky<- Merged3 %>%
   group_by(Area,pattern)%>%
   summarize(NMention=n())
 
 
-# Now we can plot the trends. Again I am using ggplot to do so
+# Now we can plot the trends wiht ggplot:
 ggplot(BreakoutWhisky, aes(x=Area, y=NMention, colour=pattern))+ # Select data set and coordinates we are going to plot
   geom_point(aes(alpha=NMention), size=5)+ # Which graph I want 
-  labs(x = "Areas", y = "Number of Mention", colour = "Keyword matching", title="Number of Mention of whisky in the Scotland Archive")+ # Rename labs and title
+  labs(x = "Areas", y = "Number of Keywords", colour = "Keyword matching", title="Whisky Keywords in the Scotland Archive")+ # Rename labels and title
   facet_wrap(~pattern, ncol=1)+
   theme_bw()+ # B/W Background
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1), legend.position = "bottom")+ # Rotate labels of x and move them slightly down. Plus move the position to the bottom 
@@ -233,9 +230,7 @@ ggplot(BreakoutWhisky, aes(x=Area, y=NMention, colour=pattern))+ # Select data s
 
 
 
-# Next step is to look at what is around our keywords 
-
-#create dfm new subtext
+# Next step is to look at what is around our keywords. We will start by creating a new dataframe:
 
 KWIC_tokens <- quanteda::tokens(Merged3$NewText, 
                                   remove_symbols=TRUE, 
@@ -263,19 +258,16 @@ textplot_wordcloud(KWIC_dfm , rotation = 0.25,
 
 
 
+#Wrap-up activity: practice & table discussion
+#1. Subset the 'Parish' dataset by rows containing data about the Edinburgh area.(Hint: Edi_data <- subset(Parish, Area == 'Edinburgh'))
 
+#2. Perform a keyword search on the Edinburgh data 'text' column for a keyword (or series of keywords) of your choice. (Don't forget to tokenise the text first!)
 
-#Wrap-up activity: comparisons & table discussion
-#1. Follow the steps from the first lesson to analyse the Scotland data. When you are finished, compare the world clouds and the top-keys results between the Scotland and UK datasets.
-#Discuss your findings with your table. 
+#3. Plot the keyword matches by 'Parish,' following the steps outlined in the lesson (performing the keyword search, merging the rows with a keyword match with the full dataset, using pipes to organise the data, and plotting with ggplot). 
 
-#2. Looking at top_keys with your table along with the word clouds we've made so far (hint: you can scroll through the plots using the arrows in the top left corner of the window),
-#what can keywords show us about a corpus? What do they not show us?
+#4. With your table, examine your plot. What does the visualisation show us about the topics related to your keyword(s) in the Edinburgh dataset? What do we still not know?
 
-#3. Can we answer our research questions with the data we have? If not, what is still unknown? What information might we need to gather?
-
-#4.Discuss the pros and cons of the text mining methods we've covered so far.
-#bonus points for coming up with a potential use case in the context of your research!
+#5. Thinking about the text analysis methods we practiced today, can you think of an example (perhaps from your research) of a use case for one of these methods?
 
 # Export our data for Friday visualisation ##########
 write_csv(uk_data_clean, "Day5/data/TextDataVis.csv")
