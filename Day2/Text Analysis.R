@@ -20,12 +20,18 @@ library (tm)
 #Import data
 Parish<-read_csv("Day2/data/Parishes.csv")
 
+
+#Let's refresh what we have in it
+summary(Parish)
+
+#The first things we need to do is to create a corpus out of the text column (that contains the text of each parish report)
+
 # 3. Extract Information about the Corpus ########
-# Create a Quanteda corpus of the 'article text' column from our data set:
-CorpusStat<-corpus(Parish$text)
+# Create a Quanteda corpus of the 'text' column from our data set:
+
 
 # Some methods for extracting information about the corpus:
-# Print doc in position 5 of the corpus
+# Print doc in position 5 of the corpus 
 summary(CorpusStat, 5)
 # Check how many docs are in the corpus
 ndoc(CorpusStat) 
@@ -209,7 +215,7 @@ Whisky<-kwic(Report_tokens , #on what
 Merged3<-merge(Whisky,TokenScotland, by.x="docname", by.y="ID")
 # Merge the before and after the keyword
 Merged3$NewTextWithKeyword<-paste(Merged3$pre,Merged3$keyword, Merged3$post)
-Merged3$NewText<-paste(Merged3$pre, Merged3$post)
+Merged3$NewText<-paste(Merged3$pre, Merged3$Keyword, Merged3$post)
 
 
 # Now I want to see in which area of Scotland there are more instances of the keywords to see if anything has changed after removing "spirit." I can do this by using pipes again:

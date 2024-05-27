@@ -251,7 +251,14 @@ get.bottle.rate <- function(x){
 BottleRate<- map(FullLinksBottle, get.bottle.rate)
 
 head(BottleRate)
+BottleRateFlat <-flatten(BottleRate) 
+  
 
+head(BottleRateFlat)
+length(BottleRateFlat)
+
+BottleRateFlat<-unlist(BottleRateFlat)
+cleanedBottleRateFlat<-as.numeric(BottleRateFlat)
 
 #get ABV
 
@@ -263,7 +270,7 @@ get.bottle.abv <- function(x){
 
 BottleABV<- map(FullLinksBottle, get.bottle.abv)
 
-head(BottleABV)
+
 
 
 # So we need to use the flatten function to deal with this
@@ -280,7 +287,7 @@ cleanedBottleABV<- sub("%", "", BottleABV)
 cleanedBottleABV<-as.numeric(cleanedBottleABV)
 
 
-FullDataSet<- data.frame(AVB=cleanedBottleABV, Distillery= BottleDistFlat, BottleName=WithBottleNames$BottleName, Reviews= WithBottleNames$review)
+FullDataSet<- data.frame(AVB=cleanedBottleABV, Distillery= BottleDistFlat, BottleName=WithBottleNames$BottleName, Reviews= WithBottleNames$review, Rate=cleanedBottleRateFlat)
 
 
 
@@ -289,17 +296,17 @@ FullDataSet<- data.frame(AVB=cleanedBottleABV, Distillery= BottleDistFlat, Bottl
 
 # Remove rows where the Review column contains the specified strings
 FullDataSetFiltered<-FullDataSet %>%
-  filter(!grepl("There are no community reviews of|Review this whisky", Reviews)) %>%
-  na.omit
+  filter(!grepl("There are no community reviews of|Review this whisky", Reviews)) 
 
 
 
 # import the list of info about distilleries
 
-List_of_whisky_distilleries <- read_csv("List_of_whisky_distilleries.csv")
+List_of_whisky_distilleries <- read_csv("Day3/data/List_of_whisky_distilleries.csv")
 
 
 
 WithDistInfo<- merge(List_of_whisky_distilleries, FullDataSetFiltered, by= "Distillery")
+WithDistInfoCleaned <- distinct(WithDistInfo)
 
-write_csv(WithDistInfo,"ReviewWithDistilleriesInfo.csv")
+write_csv(WithDistInfoCleaned,"Day3/export/ReviewWithDistilleriesInfoV2.csv")
