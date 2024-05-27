@@ -29,35 +29,30 @@ library(gt)
 
 In Groups of 3, work on designing your own data visualisation project. At the end of the task, you will want to `Knit` your markdown script to showcase your datavis project as a html document. Choose from any of the datasets we have used this week as the base of your project. You can focus on making one plot, or generate multiple if you want to use them for a narrative.
 
-Feel free to use any code from any of our previous sessions as a source of inspiration for your data visualisation. If it helps, you can delegate different roles within your team to get your best data vis project! 
+Feel free to use any code from any of our previous sessions as a source of inspiration for your data visualisation. If it helps, you can delegate different roles within your team to get your best data vis project!
 
-For example, you could: 
-* Assign one member to a conceptual/statistical role.
-* Assign another member to the Rmarkdown design (i.e., Document formatting, tabsetting to create interactive features...).
-* Another member to the aesthetic/theme design role of the plot. 
-* Or mix, match and be creative with the roles!
+For example, you could: \* Assign one member to a conceptual/statistical role. \* Assign another member to the Rmarkdown design (i.e., Document formatting, tabsetting to create interactive features...). \* Another member to the aesthetic/theme design role of the plot. \* Or mix, match and be creative with the roles!
 
-### Useful Resources 
+### Useful Resources
 
-To help, we've also included links for useful resources: 
+To help, we've also included links for useful resources:
 
-* [GGplot overview](https://ggplot2.tidyverse.org/).
-* [GGplot Function reference](https://ggplot2.tidyverse.org/reference/).
-* [GGplot Theme reference](https://ggplot2.tidyverse.org/reference/ggtheme.html).
-* [ggplot extensions](https://exts.ggplot2.tidyverse.org/ggiraph.html).
-* [ggplot GUI - also generates code for you!](https://shiny.gmw.rug.nl/ggplotgui/).
-* [Stack Overflow is a fountain of tips](https://stackoverflow.com/questions/tagged/ggplot2?sort=frequent&pageSize=50). 
-* [Inspiration and cool ggplot tricks from Cedric Scherer](https://www.cedricscherer.com/).
-* [geom options](https://ggplot2.tidyverse.org/reference/).
-* [interactive plot designs with Plotly](https://plotly.com/ggplot2/).
-* [Mix and match datavisualisation with your tables!](https://gt.rstudio.com/).
-* [Guide for including plots in gt tables](https://rfortherestofus.com/2023/10/ggplots-in-gt-tables).
-* [Customising R markdown HTML documents](https://bookdown.org/yihui/rmarkdown/html-document.html).
-* [R markdwon theme gallery and guide](https://rpubs.com/ranydc/rmarkdown_themes).
-* [Advanced Challenge Option! Use Flexdashboard in R markdown](https://pkgs.rstudio.com/flexdashboard/).
+-   [GGplot overview](https://ggplot2.tidyverse.org/).
+-   [GGplot Function reference](https://ggplot2.tidyverse.org/reference/).
+-   [GGplot Theme reference](https://ggplot2.tidyverse.org/reference/ggtheme.html).
+-   [ggplot extensions](https://exts.ggplot2.tidyverse.org/ggiraph.html).
+-   [ggplot GUI - also generates code for you!](https://shiny.gmw.rug.nl/ggplotgui/).
+-   [Stack Overflow is a fountain of tips](https://stackoverflow.com/questions/tagged/ggplot2?sort=frequent&pageSize=50).
+-   [Inspiration and cool ggplot tricks from Cedric Scherer](https://www.cedricscherer.com/).
+-   [geom options](https://ggplot2.tidyverse.org/reference/).
+-   [interactive plot designs with Plotly](https://plotly.com/ggplot2/).
+-   [Mix and match datavisualisation with your tables!](https://gt.rstudio.com/).
+-   [Guide for including plots in gt tables](https://rfortherestofus.com/2023/10/ggplots-in-gt-tables).
+-   [Customising R markdown HTML documents](https://bookdown.org/yihui/rmarkdown/html-document.html).
+-   [R markdwon theme gallery and guide](https://rpubs.com/ranydc/rmarkdown_themes).
+-   [Advanced Challenge Option! Use Flexdashboard in R markdown](https://pkgs.rstudio.com/flexdashboard/).
 
-
-## Off you go!{.tabset .tabset-pills}
+## Off you go! {.tabset .tabset-pills}
 
 ### 1) Load your datasets
 
@@ -77,4 +72,3 @@ To help, we've also included links for useful resources:
 ```{r start_data_vis, echo = FALSE}
 
 ```
-

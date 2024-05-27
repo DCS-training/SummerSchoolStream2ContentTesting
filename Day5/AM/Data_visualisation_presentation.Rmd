@@ -6,6 +6,7 @@ output:
   slidy_presentation:
     incremental: true
 ---
+
 ```{r setup, echo = FALSE, message= FALSE, warning= FALSE}
 
 library(extrafont) #additional fonts - not relevant in noteable 
@@ -273,7 +274,7 @@ ggplot(
 -   Some journals will require certain stylistic designs for your figures.
 -   This will include colour schemes, but also includes fonts and other design features.
 -   Thankfully ggplot allows us to control these aspects of the plot with full customisation options as well.
--   Here we will inspire our colour scheme from The Scotch Whisky Experience tour material colour palate (and I use Power Point to get the colour hex codes). 
+-   Here we will inspire our colour scheme from The Scotch Whisky Experience tour material colour palate (and I use Power Point to get the colour hex codes).
 
 ## Setting themes and color schemes
 

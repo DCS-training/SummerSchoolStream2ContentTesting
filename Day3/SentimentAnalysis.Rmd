@@ -72,7 +72,7 @@ code running for a couple of days
 
 ```{r load data}
 
-WhiskyReview <- read_csv("export/ReviewWithDistilleriesInfoV2.csv")
+WhiskyReview <- read_csv("data/ReviewWithDistilleriesInfoV2.csv")
 
 summary(WhiskyReview)
 ```

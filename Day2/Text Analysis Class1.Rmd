@@ -39,7 +39,7 @@ library(tidyverse)# The tidyverse is a collection of R packages designed for dat
 The first thing we need to do is to load the cleaned data set that we created yesterday
 
 ```{r Dataset, echo=TRUE}
-Parish<-read_csv("data/Parishes.csv")
+Parish<-read_csv("data/parish.csv")
 ```
 
 ## Look around the Dataset

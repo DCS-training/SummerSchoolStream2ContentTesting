@@ -29,7 +29,7 @@ library(topicmodels)#yes
 ## Load our data
 
 ```{r data}
-Parish <- read_csv("data/Parishes.csv")
+Parish <- read_csv("data/parish.csv")
 ```
 
 ## Pre-process

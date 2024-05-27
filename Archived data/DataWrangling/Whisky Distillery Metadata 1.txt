@@ -1,0 +1,17 @@
+## Whisky Distillery Metadata ##
+
+Contains data on price, review rating, ABV, whisky name, owner, distillery, region, location, category of whisky, and founding date.
+
+* 1649 rows
+* name - name of particular whisky.
+* price - price sold
+* log_price - log transformed price of whisky (to address the exponential rate at which the price ranges)
+* review.point - review score (0-100, with 0 being awful, and 100 being amazing)
+* ABV - % alcohol strength of whisky.
+* category - what sort of whisky is the whisky (i.e, blended malt scotch, blended scotch, single grain, or single malt). 98+% of the data is single malt, so likely worth filtering to only include single malt.
+* Distillery - Which distillery produced the whisky.
+* Founded - Date which distillery was established.
+* Location - which city/town/area of Scotland the distillery is based in. (i.e., Aberfeldy, Pitlochry, Edinburgh, ...)
+* Region - Which region of Scotland is the distillery based (i.e, Speyside, Highlands, Campbelltown, Islay, Islands, Lowlands).
+* Owner - Which company owns the distillery.
+* n_Distillery - Number of whisky bottles in dataset produced by each distillery
