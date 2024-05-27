@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="Data Viusalisation Presentation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Data Viusalisation Presentation_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Data Viusalisation Presentation_files/libs/quarto-html/popper.min.js"></script>
+<script src="Data Viusalisation Presentation_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Data Viusalisation Presentation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Data Viusalisation Presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Data Viusalisation Presentation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="Data Viusalisation Presentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.553">
+
+  <meta name="author" content="DCS">
+  <title>Data Visualisation</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Data Viusalisation Presentation_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Data Viusalisation Presentation_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="Data Viusalisation Presentation_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="Data Viusalisation Presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Data Viusalisation Presentation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Data Viusalisation Presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Data Viusalisation Presentation_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="Data Viusalisation Presentation_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="Data Viusalisation Presentation_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link href="Data Viusalisation Presentation_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+  <script src="Data Viusalisation Presentation_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+  <script src="Data Viusalisation Presentation_files/libs/plotly-binding-4.10.4/plotly.js"></script>
+
+  <script src="Data Viusalisation Presentation_files/libs/typedarray-0.1/typedarray.min.js"></script>
+
+  <script src="Data Viusalisation Presentation_files/libs/jquery-3.5.1/jquery.min.js"></script>
+
+  <link href="Data Viusalisation Presentation_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+  <script src="Data Viusalisation Presentation_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+  <link href="Data Viusalisation Presentation_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+  <script src="Data Viusalisation Presentation_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Data Visualisation</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+DCS 
+</div>
+</div>
+</div>
+
+</section>
+<section id="sec-grammar-of-graphics" class="slide level2">
+<h2>Grammar of Graphics</h2>
+<ul>
+<li class="fragment">A set of rules to facilitate data visualisation developed by <a href="https://link.springer.com/book/10.1007/0-387-28695-0">Leland Wilkinson</a>.</li>
+<li class="fragment">It allows us to think of plot generation by following a step by step recipe (and like all good recipes, can be modified when needed).</li>
+<li class="fragment">For a full overview, check out <a href="https://ggplot2-book.org/layers#introduction">Hadley Wickham’s free textbook</a> on using ggplot.</li>
+<li class="fragment">For inspiration on more complex plots and advanced techniques, <a href="https://www.cedricscherer.com/tags/ggplot2/">Cedric Sherer’s blog</a> is full of great ideas!</li>
+</ul>
+</section>
+<section id="grammar-of-graphics" class="slide level2">
+<h2>Grammar of Graphics</h2>
+<p>The recipe of a nice tasty plot includes:</p>
+<ol type="1">
+<li class="fragment">The data</li>
+<li class="fragment">Aesthetic Mapping</li>
+<li class="fragment">Geometric Objects and Statistical transformations</li>
+<li class="fragment">Scaling and Faceting</li>
+<li class="fragment">Themes</li>
+</ol>
+</section>
+<section id="sec-what-does-this-mean" class="slide level2">
+<h2>What does this mean?</h2>
+<ul>
+<li class="fragment"><a href="https://www.tandfonline.com/doi/abs/10.1198/jcgs.2009.07098">GGplot (grammar of graphics plot)</a> has the grammar of graphics built into its structure.</li>
+<li class="fragment">This allows us to build plots in layers.</li>
+<li class="fragment">The plots start from the data, and build all the way up to the decorations.</li>
+<li class="fragment">This provides us with a lot of control to get the plots exactly as we want them.</li>
+</ul>
+</section>
+<section id="what-does-this-mean" class="slide level2">
+<h2>What does this mean?</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-a4c273598c63667bc109" style="width:1536px;height:864px;"></div>
+<script type="application/json" data-for="htmlwidget-a4c273598c63667bc109">{"x":{"data":[{"x":[90,90,86,89,83,87,87,84,87,85,89,90,84,94,95,93,94,95,93,93,94,91,95,95,84,88,88,87,84,86,84,88,86,87,88,87,85,85,83,84,91,86,85,86,87,87,84,81,87,87,82,84,85,86,86,91,80,85,86,80,83,85,87,85,86,84,86,91,88,83,86,93,81,81,88,92,91,85,86,83,81,95,84],"y":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"hoverinfo":"x","type":"box","fillcolor":"rgba(70,65,95,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Highland","legendgroup":"Highland","showlegend":true,"xaxis":"x","yaxis":"y","orientation":"h","mode":"","frame":null},{"x":[87,89,89,90,84,90,89,85,85,87,89,89,92,87,90,86,85,85,85,87,85,80,85,86,92,85,83,90,85,86,83],"y":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"hoverinfo":"x","type":"box","fillcolor":"rgba(70,65,95,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Highland","legendgroup":"Highland","showlegend":false,"xaxis":"x","yaxis":"y3","orientation":"h","mode":"","frame":null},{"x":[80,80,92,89,80,90,89,93,84,87,82,86,89,87,90,92,89,86,90,90,84,93,92,88,87,86,84],"y":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"hoverinfo":"x","type":"box","fillcolor":"rgba(138,83,102,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Island","legendgroup":"Island","showlegend":true,"xaxis":"x","yaxis":"y","orientation":"h","mode":"","frame":null},{"x":[89,88,81,84,92,86,84,86,85,82,86,83,84,84,90,86,87,87,87,87,87,88,83,92,90,87,79,94,93,94,93,79,86,83,94,94,93,79,80,87,95,81,88,87,86,90,90,94,92,89,94,93,84,86,89,92,70,87,85,92,89,94],"y":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"hoverinfo":"x","type":"box","fillcolor":"rgba(138,83,102,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Island","legendgroup":"Island","showlegend":false,"xaxis":"x","yaxis":"y2","orientation":"h","mode":"","frame":null},{"x":[73,85,88,85,80,89,81,89,86,85,91,84,88,87,91,85,84,79,84,90,87,89,80,88,87,84,90,94,90,88,80,89,84,87,80,85,89,88,87,89,93,80,79,89,86,81,91,88,83,86,88,85,85,86,87,83,90,92,91,93,93,92,85,88,91,82,89,81,87,89,93,90,93,92,89,85,93,93,90,89,88,92,85,88,89,88,90,81,81,85,94,88,84,89,85,93],"y":[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],"hoverinfo":"x","type":"box","fillcolor":"rgba(141,64,70,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Islay","legendgroup":"Islay","showlegend":true,"xaxis":"x","yaxis":"y","orientation":"h","mode":"","frame":null},{"x":[90,90,94,90,90,95,91,87,90,89,89,89,81,90,87,83,87,94,92,85,83,86,81,93,86,89,92,93,91,80,85,89,85,82,83,88,97,89,88,83,94,85,86,97,95,85,85,89,90,87,90,89,84,91,87,92,88,80,86,84,91,80,89,84,78,91,88,80,91,90,91,96,84,85,83,80,88,81,86,88,92,96,91,89,84,85,85,86,82,94,89],"y":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"hoverinfo":"x","type":"box","fillcolor":"rgba(141,64,70,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Islay","legendgroup":"Islay","showlegend":false,"xaxis":"x","yaxis":"y3","orientation":"h","mode":"","frame":null},{"x":[86,81,89,85,80,84,84,83],"y":[4,4,4,4,4,4,4,4],"hoverinfo":"x","type":"box","fillcolor":"rgba(190,139,94,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Lowland","legendgroup":"Lowland","showlegend":true,"xaxis":"x","yaxis":"y","orientation":"h","mode":"","frame":null},{"x":[86,86,84,90,85,85,81,79,77,90,87,84,84,88,91,82,83,85,87,80,85,86,87,85,89,81,82,86,84,83,86,85,85,86,86,85,86,80,85,85],"y":[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],"hoverinfo":"x","type":"box","fillcolor":"rgba(190,139,94,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Lowland","legendgroup":"Lowland","showlegend":false,"xaxis":"x","yaxis":"y3","orientation":"h","mode":"","frame":null},{"x":[91,87,85,89,93,93,86,93,88,90,89,80,89,84,83,89,80,88,92,83,88,93,81,87,81,79,82,86,87,86,75,86,90,82,91,93,79,85,90,82,90,82,82,92,85,87,78,89,81,86,92,84,85,83,82,83,88,86,84,86,84,85,82,90,86,80,89,86,90,76,77,91,89,82,83,87,87,90,78,87,86,87,87,89,85,90,84,80,83,85,85,89,91,83,93,87,88,86,87,85,83,88,83,80,87],"y":[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],"hoverinfo":"x","type":"box","fillcolor":"rgba(87,104,132,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Speyside","legendgroup":"Speyside","showlegend":true,"xaxis":"x","yaxis":"y","orientation":"h","mode":"","frame":null},{"x":[90,82,83,90,87,82,86,79,88,90,86,88,84,85,77,88,92,85,88,90,90,89,89,92,87,89,86,91,82,92,96,83,88,83,88,87,90,87,90,83,91,86,83,85,92,90,91,88,85,84,83,85,89,88,86,84,87,86,80,89,88,88,92,82,83,82,93,85,90,88,84,93,88,93,90,89,90,87,85,85,94,90,92,90,90,95,83,92,94,89,88,74,85,83,92,80,87,92,93,88,87],"y":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"hoverinfo":"x","type":"box","fillcolor":"rgba(87,104,132,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Speyside","legendgroup":"Speyside","showlegend":false,"xaxis":"x","yaxis":"y2","orientation":"h","mode":"","frame":null},{"x":[87.07228915662651],"y":[1],"text":"Region: Highland<br />review.point: 87.07229<br />Region: Highland","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.42710925230998953],"arrayminus":[0.42710925230998953],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Highland","legendgroup":"Highland","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(70,65,95,1)","opacity":1,"size":2.6456692913385824,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[86.774193548387103],"y":[1],"text":"Region: Highland<br />review.point: 86.77419<br />Region: Highland","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.50098757827915108],"arrayminus":[0.50098757827915108],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Highland","legendgroup":"Highland","showlegend":false,"xaxis":"x","yaxis":"y3","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(70,65,95,1)","opacity":1,"size":2.6456692913385824,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[87.370370370370367],"y":[2],"text":"Region: Island<br />review.point: 87.37037<br />Region: Island","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.75324208688024896],"arrayminus":[0.75324208688024896],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Island","legendgroup":"Island","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(138,83,102,1)","opacity":1,"size":2.6456692913385824,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[87.41935483870968],"y":[1],"text":"Region: Island<br />review.point: 87.41935<br />Region: Island","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.62027628441639138],"arrayminus":[0.62027628441639138],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Island","legendgroup":"Island","showlegend":false,"xaxis":"x","yaxis":"y2","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(138,83,102,1)","opacity":1,"size":2.6456692913385824,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[87.072916666666671],"y":[3],"text":"Region: Islay<br />review.point: 87.07292<br />Region: Islay","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.41944114648600817],"arrayminus":[0.41944114648600817],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Islay","legendgroup":"Islay","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(141,64,70,1)","opacity":1,"size":2.6456692913385824,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[87.769230769230774],"y":[2],"text":"Region: Islay<br />review.point: 87.76923<br />Region: Islay","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.45749141403285876],"arrayminus":[0.45749141403285876],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Islay","legendgroup":"Islay","showlegend":false,"xaxis":"x","yaxis":"y3","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(141,64,70,1)","opacity":1,"size":2.6456692913385824,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[84],"y":[4],"text":"Region: Lowland<br />review.point: 84.00000<br />Region: Lowland","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[1],"arrayminus":[1],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Lowland","legendgroup":"Lowland","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(190,139,94,1)","opacity":1,"size":2.6456692913385824,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[84.775000000000006],"y":[3],"text":"Region: Lowland<br />review.point: 84.77500<br />Region: Lowland","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.46751868192481538],"arrayminus":[0.46751868192481538],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Lowland","legendgroup":"Lowland","showlegend":false,"xaxis":"x","yaxis":"y3","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(190,139,94,1)","opacity":1,"size":2.6456692913385824,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[85.80952380952381],"y":[5],"text":"Region: Speyside<br />review.point: 85.80952<br />Region: Speyside","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.40194017516671465],"arrayminus":[0.40194017516671465],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Speyside","legendgroup":"Speyside","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(87,104,132,1)","opacity":1,"size":2.6456692913385824,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[87.396039603960389],"y":[2],"text":"Region: Speyside<br />review.point: 87.39604<br />Region: Speyside","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.39678889514583204],"arrayminus":[0.39678889514583204],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Speyside","legendgroup":"Speyside","showlegend":false,"xaxis":"x","yaxis":"y2","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(87,104,132,1)","opacity":1,"size":2.6456692913385824,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null}],"layout":{"margin":{"t":60.868779115354471,"r":7.3059360730593621,"b":45.333702320003702,"l":61.967621419676242},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"Palatino Linotype","size":15.940224159402243},"title":{"text":"<b> Whisky Review Scores by Region from the Top 3 largest Producers <\/b>","font":{"color":"rgba(0,0,0,1)","family":"Palatino Linotype","size":19.128268991282692},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[68.650000000000006,98.349999999999994],"tickmode":"array","ticktext":["70","80","90"],"tickvals":[70,80,90],"categoryorder":"array","categoryarray":["70","80","90"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Palatino Linotype","size":12.7521793275218},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y3","title":"","hoverformat":".2f"},"annotations":[{"text":"<b> Online Review Scores <\/b>","x":0.5,"y":0,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"Palatino Linotype","size":15.940224159402243},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"top","annotationType":"axis","yshift":-22.98048982980491},{"text":"Diageo","x":0.5,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(26,26,26,1)","family":"Palatino Linotype","size":12.7521793275218},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Edrington","x":0.5,"y":0.65796088741294223,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(26,26,26,1)","family":"Palatino Linotype","size":12.7521793275218},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Beam Suntory","x":0.5,"y":0.32462755407960892,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(26,26,26,1)","family":"Palatino Linotype","size":12.7521793275218},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"}],"yaxis":{"domain":[0.67537244592039125,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,5.5999999999999996],"tickmode":"array","ticktext":["Highland","Island","Islay","Lowland","Speyside"],"tickvals":[1,2,3,4,5],"categoryorder":"array","categoryarray":["Highland","Island","Islay","Lowland","Speyside"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Palatino Linotype","size":12.7521793275218},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0.67537244592039125,"y1":1},{"type":"rect","fillcolor":"rgba(186,184,189,1)","line":{"color":"rgba(0,0,0,1)","width":0.92984640929846418,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":24.441677044416778,"yanchor":1,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0.34203911258705783,"y1":0.65796088741294223},{"type":"rect","fillcolor":"rgba(186,184,189,1)","line":{"color":"rgba(0,0,0,1)","width":0.92984640929846418,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":24.441677044416778,"yanchor":0.65796088741294223,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":0.32462755407960892},{"type":"rect","fillcolor":"rgba(186,184,189,1)","line":{"color":"rgba(0,0,0,1)","width":0.92984640929846418,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":24.441677044416778,"yanchor":0.32462755407960892,"ysizemode":"pixel"}],"yaxis2":{"type":"linear","autorange":false,"range":[0.40000000000000002,2.6000000000000001],"tickmode":"array","ticktext":["Island","Speyside"],"tickvals":[1,2],"categoryorder":"array","categoryarray":["Island","Speyside"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Palatino Linotype","size":12.7521793275218},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"domain":[0.34203911258705783,0.65796088741294223],"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"yaxis3":{"type":"linear","autorange":false,"range":[0.40000000000000002,3.6000000000000001],"tickmode":"array","ticktext":["Highland","Islay","Lowland"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["Highland","Islay","Lowland"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Palatino Linotype","size":12.7521793275218},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"domain":[0,0.32462755407960892],"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"Palatino Linotype","size":12.7521793275218},"title":{"text":"Region","font":{"color":"rgba(0,0,0,1)","family":"Palatino Linotype","size":15.940224159402243}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"3c6c2cf329d5":{"x":{},"y":{},"fill":{},"type":"box"},"3c6c49a42888":{"x":{},"y":{},"fill":{}},"3c6cbd47133":{"x":{},"y":{},"fill":{}}},"cur_data":"3c6c2cf329d5","visdat":{"3c6c2cf329d5":["function (y) ","x"],"3c6c49a42888":["function (y) ","x"],"3c6cbd47133":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="building-our-plot" class="slide level2">
+<h2>Building our Plot</h2>
+<ul>
+<li class="fragment">Our first call is to use the function <code>ggplot()</code></li>
+<li class="fragment">By itself, it looks like this:</li>
+</ul>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/ggplot_function-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-layer" class="slide level2">
+<h2>Data layer</h2>
+<ul>
+<li class="fragment">From there, we need to specify the data we need.</li>
+<li class="fragment">We can feed in the data as it is.</li>
+<li class="fragment">Or we can wrangle the data specifically for the visualisation.</li>
+<li class="fragment">However, at this stage our plot is still blank.</li>
+</ul>
+</section>
+<section id="data-layer-1" class="slide level2">
+<h2>Data Layer</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Regular data</span></span>
+<span id="cb2-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> Whisky_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/data_layer-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-our-coordinates" class="slide level2">
+<h2>Adding our coordinates</h2>
+<ul>
+<li class="fragment">Our plots are empty as we’ve not told <em>R</em> what variables to use.</li>
+<li class="fragment">Thankfully, the command is very simple, using the <code>aes()</code> command after specifying the data.</li>
+<li class="fragment">Here we simply label our <em>x</em> and <em>y</em> coordinates.</li>
+<li class="fragment">But as we will see, we still don’t have any visual ques in the plot itself.</li>
+</ul>
+</section>
+<section id="adding-our-coordinates-1" class="slide level2">
+<h2>Adding our coordinates</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Standard version</span></span>
+<span id="cb3-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> Whisky_data,</span>
+<span id="cb3-3"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> review.point)) <span class="co"># setting x and y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/coordinates-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="graphic-element-of-the-plot" class="slide level2">
+<h2>Graphic element of the plot</h2>
+<ul>
+<li class="fragment">Here we link the <strong>coordinates</strong> from our <strong>data</strong> to visual geometries.</li>
+<li class="fragment">We use geoms (geometric functions) to decide how to shape the coordinates.</li>
+<li class="fragment">This allows us to shape our plot with our determined coordinates.</li>
+<li class="fragment">We can also apply statistical functions with the geoms.</li>
+<li class="fragment">We can place multiple geom layers.</li>
+<li class="fragment">The order of our layers is determined by the order we code.</li>
+</ul>
+</section>
+<section id="sec-graphic-element-of-the-plot" class="slide level2">
+<h2>Graphic element of the plot</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># First Layer</span></span>
+<span id="cb4-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> Whisky_data,</span>
+<span id="cb4-3"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> review.point)) <span class="sc">+</span> <span class="co"># setting x and y </span></span>
+<span id="cb4-4"><a href=""></a>  <span class="fu">geom_half_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/geoms-1.png" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Second Layer</span></span>
+<span id="cb5-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> Whisky_data,</span>
+<span id="cb5-3"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> review.point))<span class="sc">+</span></span>
+<span id="cb5-4"><a href=""></a>  <span class="fu">geom_half_boxplot</span>(<span class="at">size =</span> .<span class="dv">5</span>, <span class="at">width =</span> .<span class="dv">2</span>)<span class="sc">+</span> <span class="co"># scaling size and width</span></span>
+<span id="cb5-5"><a href=""></a>  <span class="fu">geom_half_violin</span>(<span class="at">side =</span> <span class="st">"r"</span>) <span class="co">#choosing right side for aesthetics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/geoms_2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-statistical-layers" class="slide level2">
+<h2>Adding statistical layers</h2>
+<ul>
+<li class="fragment">Here we can model visualise any model we’ve used in our analyses.</li>
+<li class="fragment">This is a vital step for communicating our research.</li>
+<li class="fragment">It’s also a fundamental step in validating our findings.</li>
+<li class="fragment">R has so many options for visualising our models! From loess and linear models, to means and standard deviations.</li>
+</ul>
+</section>
+<section id="adding-statistical-layers-1" class="slide level2">
+<h2>Adding statistical layers</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="6|8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># Second Layer</span></span>
+<span id="cb6-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> Whisky_data,</span>
+<span id="cb6-3"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> review.point))<span class="sc">+</span></span>
+<span id="cb6-4"><a href=""></a>  <span class="fu">geom_half_boxplot</span>(<span class="at">size =</span> .<span class="dv">5</span>, <span class="at">width =</span> .<span class="dv">2</span>)<span class="sc">+</span> <span class="co"># scaling size and width</span></span>
+<span id="cb6-5"><a href=""></a>  <span class="fu">geom_half_violin</span>(<span class="at">side =</span> <span class="st">"r"</span>) <span class="sc">+</span> <span class="co">#choosing right side for aesthetics</span></span>
+<span id="cb6-6"><a href=""></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se,</span>
+<span id="cb6-7"><a href=""></a>    <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">size =</span> <span class="fl">1.2</span>)<span class="sc">+</span> <span class="co"># adjusting size</span></span>
+<span id="cb6-8"><a href=""></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, </span>
+<span id="cb6-9"><a href=""></a>    <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> .<span class="dv">7</span>, <span class="at">size =</span> .<span class="dv">7</span>) <span class="co"># making smaller for a white centre</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/geoms_3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="scaling-our-plots" class="slide level2">
+<h2>Scaling our plots</h2>
+<ul>
+<li class="fragment">This is closer, but we can see that our plots need some serious work.</li>
+<li class="fragment">We have an influential outlier that’s causing havoc.</li>
+<li class="fragment">We can also account for other influential variables (like like owners).</li>
+<li class="fragment">We can focus our data for a clearer narrative.</li>
+<li class="fragment">We can also tweak the coordinates.</li>
+</ul>
+</section>
+<section id="scaling-our-plots-1" class="slide level2">
+<h2>Scaling our plots</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="2|3|4|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>Whisky_data <span class="sc">%&gt;%</span> <span class="co"># </span></span>
+<span id="cb7-2"><a href=""></a>  <span class="fu">filter</span>(category  <span class="sc">==</span> <span class="st">"Single Malt Scotch"</span>) <span class="sc">%&gt;%</span> <span class="co">#filter to include only single malt</span></span>
+<span id="cb7-3"><a href=""></a>  <span class="fu">count</span>(Owner) <span class="sc">%&gt;%</span> <span class="co"># counting Owner</span></span>
+<span id="cb7-4"><a href=""></a>  <span class="fu">top_n</span>(<span class="at">n =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="co"># set n so we get top 3 Owners by count</span></span>
+<span id="cb7-5"><a href=""></a>  <span class="fu">left_join</span>(Whisky_data) <span class="sc">%&gt;%</span>  <span class="co"># joining back to data</span></span>
+<span id="cb7-6"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb7-7"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> review.point))<span class="sc">+</span></span>
+<span id="cb7-8"><a href=""></a>  <span class="fu">geom_half_boxplot</span>(<span class="at">size =</span> .<span class="dv">5</span>, <span class="at">width =</span> .<span class="dv">2</span>)<span class="sc">+</span> </span>
+<span id="cb7-9"><a href=""></a>  <span class="fu">geom_half_violin</span>(<span class="at">side =</span> <span class="st">"r"</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a href=""></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, </span>
+<span id="cb7-11"><a href=""></a>    <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">size =</span> <span class="fl">1.2</span>)<span class="sc">+</span></span>
+<span id="cb7-12"><a href=""></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se,</span>
+<span id="cb7-13"><a href=""></a>    <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> .<span class="dv">7</span>, <span class="at">size =</span> .<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/scaled_geoms-1.png" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="scaling-our-plots-2" class="slide level2">
+<h2>Scaling our plots</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="8|15|16|17|18|19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>Whisky_data <span class="sc">%&gt;%</span> <span class="co"># </span></span>
+<span id="cb8-2"><a href=""></a>  <span class="fu">filter</span>(category  <span class="sc">==</span> <span class="st">"Single Malt Scotch"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href=""></a>  <span class="fu">count</span>(Owner) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-4"><a href=""></a>  <span class="fu">top_n</span>(<span class="at">n =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-5"><a href=""></a>  <span class="fu">left_join</span>(Whisky_data) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-6"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb8-7"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> review.point, </span>
+<span id="cb8-8"><a href=""></a>      <span class="at">fill =</span> Region))<span class="sc">+</span></span>
+<span id="cb8-9"><a href=""></a>  <span class="fu">geom_half_boxplot</span>(<span class="at">size =</span> .<span class="dv">5</span>, <span class="at">width =</span> .<span class="dv">2</span>)<span class="sc">+</span> </span>
+<span id="cb8-10"><a href=""></a>  <span class="fu">geom_half_violin</span>(<span class="at">side =</span> <span class="st">"r"</span>) <span class="sc">+</span></span>
+<span id="cb8-11"><a href=""></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, </span>
+<span id="cb8-12"><a href=""></a>    <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb8-13"><a href=""></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, </span>
+<span id="cb8-14"><a href=""></a>    <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> .<span class="dv">6</span>, <span class="at">size =</span> .<span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb8-15"><a href=""></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">reorder</span>(Owner, <span class="sc">-</span>n), <span class="co"># faceting by Owner, ranking by descending n</span></span>
+<span id="cb8-16"><a href=""></a>    <span class="at">ncol =</span> <span class="dv">1</span>, <span class="co"># number of columns </span></span>
+<span id="cb8-17"><a href=""></a>    <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="co">#changed to "free_y" to drop unused labels</span></span>
+<span id="cb8-18"><a href=""></a>    <span class="at">strip.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span> <span class="co">#label position +</span></span>
+<span id="cb8-19"><a href=""></a>  <span class="fu">coord_flip</span>() <span class="co"># flipping chart on its side</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/scaled_geoms_2-1.png" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="setting-themes-and-color-schemes" class="slide level2">
+<h2>Setting themes and color schemes</h2>
+<ul>
+<li class="fragment">Some journals will require certain stylistic designs for your figures.</li>
+<li class="fragment">This will include colour schemes, but also includes fonts and other design features.</li>
+<li class="fragment">Thankfully ggplot allows us to control these aspects of the plot with full customisation options as well.</li>
+<li class="fragment">Here we will inspire our colour scheme from The Scotch Whisky Experience tour material colour palate (and I use Power Point to get the colour hex codes).</li>
+</ul>
+</section>
+<section id="setting-themes-and-color-schemes-1" class="slide level2">
+<h2>Setting themes and color schemes</h2>
+<ul>
+<li class="fragment">Pre-made colour and theme options also exist:</li>
+<li class="fragment"><a href="https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html#Introduction">Journal color schemes</a></li>
+<li class="fragment"><a href="https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/">Theme options</a></li>
+<li class="fragment"><a href="https://github.com/karthik/wesanderson">Wes Anderson Color Scheme</a></li>
+</ul>
+</section>
+<section id="setting-themes-and-color-schemes-2" class="slide level2">
+<h2>Setting themes and color schemes</h2>
+<h3 id="decluttering-our-code">Decluttering our code</h3>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="1|18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>plot <span class="ot">&lt;-</span> Whisky_data <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href=""></a>  <span class="fu">filter</span>(category  <span class="sc">==</span> <span class="st">"Single Malt Scotch"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href=""></a>  <span class="fu">count</span>(Owner) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-4"><a href=""></a>  <span class="fu">top_n</span>(<span class="at">n =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a href=""></a>  <span class="fu">left_join</span>(Whisky_data) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-6"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb9-7"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> review.point, <span class="at">fill =</span> Region))<span class="sc">+</span></span>
+<span id="cb9-8"><a href=""></a>  <span class="fu">geom_half_boxplot</span>(<span class="at">size =</span> .<span class="dv">5</span>, <span class="at">width =</span> .<span class="dv">2</span>)<span class="sc">+</span> </span>
+<span id="cb9-9"><a href=""></a>  <span class="fu">geom_half_violin</span>(<span class="at">side =</span> <span class="st">"r"</span>) <span class="sc">+</span></span>
+<span id="cb9-10"><a href=""></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, </span>
+<span id="cb9-11"><a href=""></a>    <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb9-12"><a href=""></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se,</span>
+<span id="cb9-13"><a href=""></a>    <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> .<span class="dv">6</span>, <span class="at">size =</span> .<span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb9-14"><a href=""></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">reorder</span>(Owner, <span class="sc">-</span>n), </span>
+<span id="cb9-15"><a href=""></a>    <span class="at">ncol =</span> <span class="dv">1</span>, </span>
+<span id="cb9-16"><a href=""></a>    <span class="at">scales =</span> <span class="st">"free_y"</span>, </span>
+<span id="cb9-17"><a href=""></a>    <span class="at">strip.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span> </span>
+<span id="cb9-18"><a href=""></a>  <span class="fu">coord_flip</span>()</span>
+<span id="cb9-19"><a href=""></a></span>
+<span id="cb9-20"><a href=""></a>plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/taming_code-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="setting-themes-and-color-schemes-3" class="slide level2">
+<h2>Setting themes and color schemes</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="2|3|4|5|6|7|8|9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>plot <span class="sc">+</span></span>
+<span id="cb10-2"><a href=""></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb10-3"><a href=""></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="at">Speyside =</span> <span class="st">"#576884"</span>, <span class="at">Lowland =</span> <span class="st">"#BE8B5E"</span>, <span class="at">Highland =</span> <span class="st">"#46415F"</span>, </span>
+<span id="cb10-4"><a href=""></a>               <span class="at">Islay =</span> <span class="st">"#8D4046"</span>, <span class="at">Island =</span> <span class="st">"#8A5366"</span>, <span class="at">Campbeltown =</span> <span class="st">"#395558"</span> )) <span class="sc">+</span> <span class="co">#setting to discrete variables</span></span>
+<span id="cb10-5"><a href=""></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="co"># from ggthemes</span></span>
+<span id="cb10-6"><a href=""></a>  <span class="fu">theme</span>(<span class="at">strip.background =</span> <span class="co"># play with facet label</span></span>
+<span id="cb10-7"><a href=""></a>    <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">"#BAB8BD"</span>,<span class="co"># facet label fill</span></span>
+<span id="cb10-8"><a href=""></a>    <span class="at">color =</span> <span class="st">"black"</span>), <span class="co">#facet label border</span></span>
+<span id="cb10-9"><a href=""></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span> <span class="co"># change legend position</span></span>
+<span id="cb10-10"><a href=""></a>        ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/themes_and_color_schemes-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="setting-themes-and-color-schemes---font" class="slide level2">
+<h2>Setting themes and color schemes - font</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co">#initialising fonts - </span></span>
+<span id="cb11-2"><a href=""></a><span class="do">## Uncomment and copy + paste, and run this step in console</span></span>
+<span id="cb11-3"><a href=""></a><span class="do">## Its too slow and intensive to run through quatro/markdown itself</span></span>
+<span id="cb11-4"><a href=""></a><span class="co"># library(extrafont) # library for fonts tools</span></span>
+<span id="cb11-5"><a href=""></a><span class="co"># font_import() #gain access to additional fonts</span></span>
+<span id="cb11-6"><a href=""></a><span class="co"># loadfonts(device = "win") #load fonts into R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="setting-themes-and-color-schemes-font" class="slide level2">
+<h2>Setting themes and color schemes: Font</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="9|10|11|12|13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>better_plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
+<span id="cb12-2"><a href=""></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb12-3"><a href=""></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="at">Speyside =</span> <span class="st">"#576884"</span>, <span class="at">Lowland =</span> <span class="st">"#BE8B5E"</span>, <span class="at">Highland =</span> <span class="st">"#46415F"</span>, </span>
+<span id="cb12-4"><a href=""></a>               <span class="at">Islay =</span> <span class="st">"#8D4046"</span>, <span class="at">Island =</span> <span class="st">"#8A5366"</span>, <span class="at">Campbeltown =</span> <span class="st">"#395558"</span> )) <span class="sc">+</span> </span>
+<span id="cb12-5"><a href=""></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb12-6"><a href=""></a>  <span class="fu">theme</span>(<span class="at">strip.background =</span> </span>
+<span id="cb12-7"><a href=""></a>    <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">"#BAB8BD"</span>,</span>
+<span id="cb12-8"><a href=""></a>    <span class="at">color =</span> <span class="st">"black"</span>),</span>
+<span id="cb12-9"><a href=""></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb12-10"><a href=""></a>    <span class="at">text=</span> <span class="fu">element_text</span>( <span class="co"># command to control text</span></span>
+<span id="cb12-11"><a href=""></a>    <span class="at">size=</span><span class="dv">16</span>, <span class="co">#font size</span></span>
+<span id="cb12-12"><a href=""></a>    <span class="at">family=</span><span class="st">"Comic Sans MS"</span>) <span class="co">#font style</span></span>
+<span id="cb12-13"><a href=""></a>        ) </span>
+<span id="cb12-14"><a href=""></a></span>
+<span id="cb12-15"><a href=""></a>better_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/themes_and_color_schemes_font-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="setting-themes-and-color-schemes---font-1" class="slide level2">
+<h2>Setting themes and color schemes - font</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="12|13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>better_plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
+<span id="cb13-2"><a href=""></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb13-3"><a href=""></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="at">Speyside =</span> <span class="st">"#576884"</span>, <span class="at">Lowland =</span> <span class="st">"#BE8B5E"</span>, <span class="at">Highland =</span> <span class="st">"#46415F"</span>, </span>
+<span id="cb13-4"><a href=""></a>               <span class="at">Islay =</span> <span class="st">"#8D4046"</span>, <span class="at">Island =</span> <span class="st">"#8A5366"</span>, <span class="at">Campbeltown =</span> <span class="st">"#395558"</span> )) <span class="sc">+</span> </span>
+<span id="cb13-5"><a href=""></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb13-6"><a href=""></a>  <span class="fu">theme</span>(<span class="at">strip.background =</span> </span>
+<span id="cb13-7"><a href=""></a>    <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">"#BAB8BD"</span>,</span>
+<span id="cb13-8"><a href=""></a>    <span class="at">color =</span> <span class="st">"black"</span>),</span>
+<span id="cb13-9"><a href=""></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>, <span class="co"># dropping legend, as label is clear</span></span>
+<span id="cb13-10"><a href=""></a>    <span class="at">text=</span> <span class="fu">element_text</span>( <span class="co"># command to control text</span></span>
+<span id="cb13-11"><a href=""></a>    <span class="at">size=</span><span class="dv">16</span>, <span class="co">#font size</span></span>
+<span id="cb13-12"><a href=""></a>    <span class="at">family=</span><span class="st">"Palatino Linotype"</span>, <span class="co">#font style</span></span>
+<span id="cb13-13"><a href=""></a>    <span class="at">face =</span> <span class="st">"bold"</span>) <span class="co"># choose bold/italics/default</span></span>
+<span id="cb13-14"><a href=""></a>        ) </span>
+<span id="cb13-15"><a href=""></a></span>
+<span id="cb13-16"><a href=""></a>better_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/lFont_change-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="labelling-our-plot" class="slide level2">
+<h2>Labelling our plot</h2>
+<ul>
+<li class="fragment">Our plot is now almost ready to go!</li>
+<li class="fragment">We just need to customise our labels.</li>
+<li class="fragment">This helps make our plots more informative</li>
+</ul>
+</section>
+<section id="labelling-our-plot-1" class="slide level2">
+<h2>Labelling our plot</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="3|4|5|6|7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>fancy_plot<span class="ot">&lt;-</span> better_plot <span class="sc">+</span></span>
+<span id="cb14-2"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-3"><a href=""></a>       <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb14-4"><a href=""></a>       <span class="at">y =</span> <span class="st">"Review Scores"</span>,</span>
+<span id="cb14-5"><a href=""></a>       <span class="at">title =</span> <span class="st">"Whisky Review Scores by Region from the Top 3 largest Producers"</span>)</span>
+<span id="cb14-6"><a href=""></a></span>
+<span id="cb14-7"><a href=""></a>fancy_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/labelled_plot-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="labelling-our-plot-2" class="slide level2">
+<h2>Labelling our plot</h2>
+
+<img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/unnamed-chunk-1-1.png" width="1536" class="r-stretch"></section>
+<section id="bonus---interactive-plot" class="slide level2">
+<h2>Bonus - Interactive plot</h2>
+<ul>
+<li class="fragment">Using the <code>plotly</code> package, we can make our plots interactive when in html format.</li>
+<li class="fragment">This can be very useful for presenting our data to a live audience.</li>
+<li class="fragment">It can also be useful for teaching purposes - to help students understand what our coefficients mean visually.</li>
+<li class="fragment">Note that some features of the plot maybe lost, as <code>plotly</code> uses a slightly different structure to ggplot.</li>
+<li class="fragment">Otherwise, it is very easy to convert our plot with the <code>ggplotly()</code> function</li>
+</ul>
+</section>
+<section id="bonus---interactive-plot-1" class="slide level2">
+<h2>Bonus - Interactive plot</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>p <span class="ot">&lt;-</span>  Whisky_data <span class="sc">%&gt;%</span> <span class="co"># assigning our code to "plot object"</span></span>
+<span id="cb15-2"><a href=""></a>  <span class="fu">filter</span>(category  <span class="sc">==</span> <span class="st">"Single Malt Scotch"</span>)<span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href=""></a>  <span class="fu">count</span>(Owner) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href=""></a>  <span class="fu">top_n</span>(<span class="at">n =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="co"># set n</span></span>
+<span id="cb15-5"><a href=""></a>  <span class="fu">left_join</span>(Whisky_data) <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a href=""></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb15-7"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> review.point, <span class="at">fill =</span> Region))<span class="sc">+</span></span>
+<span id="cb15-8"><a href=""></a>      <span class="fu">geom_boxplot</span>()<span class="sc">+</span> </span>
+<span id="cb15-9"><a href=""></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb15-10"><a href=""></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="at">Speyside =</span> <span class="st">"#576884"</span>, <span class="at">Lowland =</span> <span class="st">"#BE8B5E"</span>, <span class="at">Highland =</span> <span class="st">"#46415F"</span>, </span>
+<span id="cb15-11"><a href=""></a>               <span class="at">Islay =</span> <span class="st">"#8D4046"</span>, <span class="at">Island =</span> <span class="st">"#8A5366"</span>, <span class="at">Campbeltown =</span> <span class="st">"#395558"</span> )) <span class="sc">+</span></span>
+<span id="cb15-12"><a href=""></a>    <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, </span>
+<span id="cb15-13"><a href=""></a>      <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb15-14"><a href=""></a>    <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, </span>
+<span id="cb15-15"><a href=""></a>      <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> .<span class="dv">6</span>, <span class="at">size =</span> .<span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb15-16"><a href=""></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">reorder</span>(Owner, <span class="sc">-</span>n) , </span>
+<span id="cb15-17"><a href=""></a>      <span class="at">ncol =</span> <span class="dv">1</span>, </span>
+<span id="cb15-18"><a href=""></a>      <span class="at">scales =</span> <span class="st">"free_y"</span>, </span>
+<span id="cb15-19"><a href=""></a>      <span class="at">strip.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span> </span>
+<span id="cb15-20"><a href=""></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb15-21"><a href=""></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb15-22"><a href=""></a>  <span class="fu">theme</span>(<span class="at">strip.background =</span> </span>
+<span id="cb15-23"><a href=""></a>    <span class="fu">element_rect</span>(<span class="at">fill=</span><span class="st">"#BAB8BD"</span>,</span>
+<span id="cb15-24"><a href=""></a>    <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb15-25"><a href=""></a>    <span class="at">linewidth =</span> .<span class="dv">4</span>),</span>
+<span id="cb15-26"><a href=""></a>    <span class="at">text=</span> <span class="fu">element_text</span>( <span class="co"># command to control text</span></span>
+<span id="cb15-27"><a href=""></a>    <span class="at">size=</span><span class="dv">16</span>, <span class="co">#font size</span></span>
+<span id="cb15-28"><a href=""></a>    <span class="at">family=</span><span class="st">"Palatino Linotype"</span>, <span class="co">#font style</span></span>
+<span id="cb15-29"><a href=""></a>    <span class="at">face =</span> <span class="st">"bold"</span>) <span class="co"># choose bold/italics/default</span></span>
+<span id="cb15-30"><a href=""></a>        ) </span>
+<span id="cb15-31"><a href=""></a></span>
+<span id="cb15-32"><a href=""></a>p <span class="co"># ggplotly(p)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Data-Viusalisation-Presentation_files/figure-revealjs/interactive_plot-1.png" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="bonus---interactive-plot-2" class="slide level2">
+<h2>Bonus - Interactive plot</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-48e381063000ca7fa950" style="width:1536px;height:864px;"></div>
+<script type="application/json" data-for="htmlwidget-48e381063000ca7fa950">{"x":{"data":[{"x":[90,90,86,89,83,87,87,84,87,85,89,90,84,94,95,93,94,95,93,93,94,91,95,95,84,88,88,87,84,86,84,88,86,87,88,87,85,85,83,84,91,86,85,86,87,87,84,81,87,87,82,84,85,86,86,91,80,85,86,80,83,85,87,85,86,84,86,91,88,83,86,93,81,81,88,92,91,85,86,83,81,95,84],"y":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"hoverinfo":"x","type":"box","fillcolor":"rgba(70,65,95,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Highland","legendgroup":"Highland","showlegend":true,"xaxis":"x","yaxis":"y","orientation":"h","mode":"","frame":null},{"x":[87,89,89,90,84,90,89,85,85,87,89,89,92,87,90,86,85,85,85,87,85,80,85,86,92,85,83,90,85,86,83],"y":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"hoverinfo":"x","type":"box","fillcolor":"rgba(70,65,95,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Highland","legendgroup":"Highland","showlegend":false,"xaxis":"x","yaxis":"y3","orientation":"h","mode":"","frame":null},{"x":[80,80,92,89,80,90,89,93,84,87,82,86,89,87,90,92,89,86,90,90,84,93,92,88,87,86,84],"y":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"hoverinfo":"x","type":"box","fillcolor":"rgba(138,83,102,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Island","legendgroup":"Island","showlegend":true,"xaxis":"x","yaxis":"y","orientation":"h","mode":"","frame":null},{"x":[89,88,81,84,92,86,84,86,85,82,86,83,84,84,90,86,87,87,87,87,87,88,83,92,90,87,79,94,93,94,93,79,86,83,94,94,93,79,80,87,95,81,88,87,86,90,90,94,92,89,94,93,84,86,89,92,70,87,85,92,89,94],"y":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"hoverinfo":"x","type":"box","fillcolor":"rgba(138,83,102,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Island","legendgroup":"Island","showlegend":false,"xaxis":"x","yaxis":"y2","orientation":"h","mode":"","frame":null},{"x":[73,85,88,85,80,89,81,89,86,85,91,84,88,87,91,85,84,79,84,90,87,89,80,88,87,84,90,94,90,88,80,89,84,87,80,85,89,88,87,89,93,80,79,89,86,81,91,88,83,86,88,85,85,86,87,83,90,92,91,93,93,92,85,88,91,82,89,81,87,89,93,90,93,92,89,85,93,93,90,89,88,92,85,88,89,88,90,81,81,85,94,88,84,89,85,93],"y":[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],"hoverinfo":"x","type":"box","fillcolor":"rgba(141,64,70,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Islay","legendgroup":"Islay","showlegend":true,"xaxis":"x","yaxis":"y","orientation":"h","mode":"","frame":null},{"x":[90,90,94,90,90,95,91,87,90,89,89,89,81,90,87,83,87,94,92,85,83,86,81,93,86,89,92,93,91,80,85,89,85,82,83,88,97,89,88,83,94,85,86,97,95,85,85,89,90,87,90,89,84,91,87,92,88,80,86,84,91,80,89,84,78,91,88,80,91,90,91,96,84,85,83,80,88,81,86,88,92,96,91,89,84,85,85,86,82,94,89],"y":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"hoverinfo":"x","type":"box","fillcolor":"rgba(141,64,70,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Islay","legendgroup":"Islay","showlegend":false,"xaxis":"x","yaxis":"y3","orientation":"h","mode":"","frame":null},{"x":[86,81,89,85,80,84,84,83],"y":[4,4,4,4,4,4,4,4],"hoverinfo":"x","type":"box","fillcolor":"rgba(190,139,94,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Lowland","legendgroup":"Lowland","showlegend":true,"xaxis":"x","yaxis":"y","orientation":"h","mode":"","frame":null},{"x":[86,86,84,90,85,85,81,79,77,90,87,84,84,88,91,82,83,85,87,80,85,86,87,85,89,81,82,86,84,83,86,85,85,86,86,85,86,80,85,85],"y":[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],"hoverinfo":"x","type":"box","fillcolor":"rgba(190,139,94,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Lowland","legendgroup":"Lowland","showlegend":false,"xaxis":"x","yaxis":"y3","orientation":"h","mode":"","frame":null},{"x":[91,87,85,89,93,93,86,93,88,90,89,80,89,84,83,89,80,88,92,83,88,93,81,87,81,79,82,86,87,86,75,86,90,82,91,93,79,85,90,82,90,82,82,92,85,87,78,89,81,86,92,84,85,83,82,83,88,86,84,86,84,85,82,90,86,80,89,86,90,76,77,91,89,82,83,87,87,90,78,87,86,87,87,89,85,90,84,80,83,85,85,89,91,83,93,87,88,86,87,85,83,88,83,80,87],"y":[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],"hoverinfo":"x","type":"box","fillcolor":"rgba(87,104,132,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Speyside","legendgroup":"Speyside","showlegend":true,"xaxis":"x","yaxis":"y","orientation":"h","mode":"","frame":null},{"x":[90,82,83,90,87,82,86,79,88,90,86,88,84,85,77,88,92,85,88,90,90,89,89,92,87,89,86,91,82,92,96,83,88,83,88,87,90,87,90,83,91,86,83,85,92,90,91,88,85,84,83,85,89,88,86,84,87,86,80,89,88,88,92,82,83,82,93,85,90,88,84,93,88,93,90,89,90,87,85,85,94,90,92,90,90,95,83,92,94,89,88,74,85,83,92,80,87,92,93,88,87],"y":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"hoverinfo":"x","type":"box","fillcolor":"rgba(87,104,132,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"},"size":5.6692913385826778},"line":{"color":"rgba(51,51,51,1)","width":1.8897637795275593},"name":"Speyside","legendgroup":"Speyside","showlegend":false,"xaxis":"x","yaxis":"y2","orientation":"h","mode":"","frame":null},{"x":[87.07228915662651],"y":[1],"text":"Region: Highland<br />review.point: 87.07229<br />Region: Highland","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.42710925230998953],"arrayminus":[0.42710925230998953],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Highland","legendgroup":"Highland","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(70,65,95,1)","opacity":1,"size":2.2677165354330708,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[86.774193548387103],"y":[1],"text":"Region: Highland<br />review.point: 86.77419<br />Region: Highland","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.50098757827915108],"arrayminus":[0.50098757827915108],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Highland","legendgroup":"Highland","showlegend":false,"xaxis":"x","yaxis":"y3","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(70,65,95,1)","opacity":1,"size":2.2677165354330708,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[87.370370370370367],"y":[2],"text":"Region: Island<br />review.point: 87.37037<br />Region: Island","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.75324208688024896],"arrayminus":[0.75324208688024896],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Island","legendgroup":"Island","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(138,83,102,1)","opacity":1,"size":2.2677165354330708,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[87.41935483870968],"y":[1],"text":"Region: Island<br />review.point: 87.41935<br />Region: Island","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.62027628441639138],"arrayminus":[0.62027628441639138],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Island","legendgroup":"Island","showlegend":false,"xaxis":"x","yaxis":"y2","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(138,83,102,1)","opacity":1,"size":2.2677165354330708,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[87.072916666666671],"y":[3],"text":"Region: Islay<br />review.point: 87.07292<br />Region: Islay","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.41944114648600817],"arrayminus":[0.41944114648600817],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Islay","legendgroup":"Islay","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(141,64,70,1)","opacity":1,"size":2.2677165354330708,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[87.769230769230774],"y":[2],"text":"Region: Islay<br />review.point: 87.76923<br />Region: Islay","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.45749141403285876],"arrayminus":[0.45749141403285876],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Islay","legendgroup":"Islay","showlegend":false,"xaxis":"x","yaxis":"y3","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(141,64,70,1)","opacity":1,"size":2.2677165354330708,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[84],"y":[4],"text":"Region: Lowland<br />review.point: 84.00000<br />Region: Lowland","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[1],"arrayminus":[1],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Lowland","legendgroup":"Lowland","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(190,139,94,1)","opacity":1,"size":2.2677165354330708,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[84.775000000000006],"y":[3],"text":"Region: Lowland<br />review.point: 84.77500<br />Region: Lowland","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.46751868192481538],"arrayminus":[0.46751868192481538],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Lowland","legendgroup":"Lowland","showlegend":false,"xaxis":"x","yaxis":"y3","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(190,139,94,1)","opacity":1,"size":2.2677165354330708,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[85.80952380952381],"y":[5],"text":"Region: Speyside<br />review.point: 85.80952<br />Region: Speyside","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.40194017516671465],"arrayminus":[0.40194017516671465],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Speyside","legendgroup":"Speyside","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(87,104,132,1)","opacity":1,"size":2.2677165354330708,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null},{"x":[87.396039603960389],"y":[2],"text":"Region: Speyside<br />review.point: 87.39604<br />Region: Speyside","type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[0.39678889514583204],"arrayminus":[0.39678889514583204],"type":"data","width":0,"symmetric":false,"color":"rgba(255,255,255,1)"},"name":"Speyside","legendgroup":"Speyside","showlegend":false,"xaxis":"x","yaxis":"y2","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(87,104,132,1)","opacity":1,"size":2.2677165354330708,"symbol":"circle","line":{"width":3.7795275590551185,"color":"rgba(255,255,255,1)"}},"hoveron":"points","frame":null}],"layout":{"margin":{"t":45.991236566579033,"r":7.3059360730593621,"b":54.897836815645036,"l":100.2241594022416},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"Palatino Linotype","size":21.253632212536321},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[68.650000000000006,98.349999999999994],"tickmode":"array","ticktext":["70","80","90"],"tickvals":[70,80,90],"categoryorder":"array","categoryarray":["70","80","90"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Palatino Linotype","size":17.002905770029059},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y3","title":"","hoverformat":".2f"},"annotations":[{"text":"<b> review.point <\/b>","x":0.5,"y":0,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"Palatino Linotype","size":21.253632212536321},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"top","annotationType":"axis","yshift":-27.231216272312171},{"text":"<b> Region <\/b>","x":0,"y":0.5,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"Palatino Linotype","size":21.253632212536321},"xref":"paper","yref":"paper","textangle":-90,"xanchor":"right","yanchor":"center","annotationType":"axis","xshift":-78.23993358239936},{"text":"Diageo","x":0.5,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(26,26,26,1)","family":"Palatino Linotype","size":17.002905770029059},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Edrington","x":0.5,"y":0.65611595406115963,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(26,26,26,1)","family":"Palatino Linotype","size":17.002905770029059},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"},{"text":"Beam Suntory","x":0.5,"y":0.32278262072782626,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(26,26,26,1)","family":"Palatino Linotype","size":17.002905770029059},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"center","yanchor":"bottom"}],"yaxis":{"domain":[0.67721737927217385,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,5.5999999999999996],"tickmode":"array","ticktext":["Highland","Island","Islay","Lowland","Speyside"],"tickvals":[1,2,3,4,5],"categoryorder":"array","categoryarray":["Highland","Island","Islay","Lowland","Speyside"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Palatino Linotype","size":17.002905770029059},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0.67721737927217385,"y1":1},{"type":"rect","fillcolor":"rgba(186,184,189,1)","line":{"color":"rgba(0,0,0,1)","width":0.5313408053134081,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":28.692403486924039,"yanchor":1,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0.34388404593884048,"y1":0.65611595406115963},{"type":"rect","fillcolor":"rgba(186,184,189,1)","line":{"color":"rgba(0,0,0,1)","width":0.5313408053134081,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":28.692403486924039,"yanchor":0.65611595406115963,"ysizemode":"pixel"},{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":0.32278262072782626},{"type":"rect","fillcolor":"rgba(186,184,189,1)","line":{"color":"rgba(0,0,0,1)","width":0.5313408053134081,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":28.692403486924039,"yanchor":0.32278262072782626,"ysizemode":"pixel"}],"yaxis2":{"type":"linear","autorange":false,"range":[0.40000000000000002,2.6000000000000001],"tickmode":"array","ticktext":["Island","Speyside"],"tickvals":[1,2],"categoryorder":"array","categoryarray":["Island","Speyside"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Palatino Linotype","size":17.002905770029059},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"domain":[0.34388404593884048,0.65611595406115963],"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"yaxis3":{"type":"linear","autorange":false,"range":[0.40000000000000002,3.6000000000000001],"tickmode":"array","ticktext":["Highland","Islay","Lowland"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["Highland","Islay","Lowland"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Palatino Linotype","size":17.002905770029059},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"domain":[0,0.32278262072782626],"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":"","hoverformat":".2f"},"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"Palatino Linotype","size":17.002905770029059},"title":{"text":"Region","font":{"color":"rgba(0,0,0,1)","family":"Palatino Linotype","size":21.253632212536321}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"3c6c26ce5dbb":{"x":{},"y":{},"fill":{},"type":"box"},"3c6c6ac92ac9":{"x":{},"y":{},"fill":{}},"3c6c7f3c26bb":{"x":{},"y":{},"fill":{}}},"cur_data":"3c6c26ce5dbb","visdat":{"3c6c26ce5dbb":["function (y) ","x"],"3c6c6ac92ac9":["function (y) ","x"],"3c6c7f3c26bb":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Data Viusalisation Presentation_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Data Viusalisation Presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Data Viusalisation Presentation_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Data Viusalisation Presentation_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Data Viusalisation Presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Data Viusalisation Presentation_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="Data Viusalisation Presentation_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Data Viusalisation Presentation_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Data Viusalisation Presentation_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Data Viusalisation Presentation_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Data Viusalisation Presentation_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
