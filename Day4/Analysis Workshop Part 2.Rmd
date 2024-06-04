@@ -31,9 +31,10 @@ Now of course, a critical eye and understanding of the limitations of your model
 ## Session Aims
 
 - Using `report()` to report our analyses.
-- Working with general linear models.
+- Working with **general** linear models.
 - Applying and interpreting interaction terms.
-- Going wild with our exploratory analyses!
+- Working with **generalised** linear models in R.
+- Running exploratory analyses with GLM.
 
 ### Theory for analyses
 
@@ -269,7 +270,7 @@ Truth is, every dataset will have it's limitations and influences of bias. Espec
 * Expensive and older whiskies do tend to be associated with higher review scores, but this association plateaus as the whiskies get older/more expensive. However, the association for the age of whisky may not be robust, due to the missing values here.
 * People tend to associate higher review scores with older distilleries. 
 
-## Move over general linear model, its generalised linear model time.
+## Move over *general* linear model, its **generalised** linear model time.
 
 Time to get frustrated with statisticians naming things! Much like ANOVA's being used to analyse **means**, and the simple slopes analysis not being all that simple... the general linear model can not be generalised to all shapes of data... in fact, it's somewhat specific to continuous data with normally distributed residuals (and other assumptions). In a master stroke of bad naming practice, the general linear model is in fact a specific form of the **generalised linear model**. They all share the same structure, which is this:
 
@@ -284,9 +285,9 @@ This structure allows us to work with any outcome variable, so long as we can fi
 Generalized linear models are fit using the `glm( )` function. The form of the glm function is
 
 ```{r}
-glm(Outcome ~ predictor_1 + predictor_2 , 
-    family= familytype(link=linkfunction), 
-    data= df)
+# glm(Outcome ~ predictor_1 + predictor_2 , 
+#     family= familytype(link=linkfunction), 
+#     data= df)
 
 
 ```
@@ -328,18 +329,36 @@ Here are some resources that might be useful if you wish to `glm()` with greater
 * [Beyond Multiple Linear Regression - Applied Generalized Linear Models and Multilevel Models in R (Roback & Legler, 2021)](https://bookdown.org/roback/bookdown-BeyondMLR/).
 * [Data Analysis in R - Generalised Linear Models Chapter (Midway, 2022)](https://bookdown.org/steve_midway/DAR/glms-generalized-linear-models.html)
 * [Stack Exchange Discussion on which glm family to use ](https://stats.stackexchange.com/questions/190763/how-to-decide-which-glm-family-to-use).
+* [Plotting GLM's (and other regression models!) is simple and easy with sjPlot](https://strengejacke.github.io/sjPlot/articles/plot_marginal_effects.html)
 
 ### Off you go!
 
-```{r glm_analysis}
+```{r glm_data_wrangling}
 
 ```
 
+
+```{r glm_analysis}
+m <- glm(.... ~ ... + ... ,
+         family = ...(link="..."), 
+         data = ...)
+
+tab_model(m,  show.est = TRUE, show.se = TRUE, use.viewer = TRUE)
+```
+
 ```{r glm_visualisation}
+library(sjPlot)
+plot_model(model = m , 
+    type = "pred", 
+    terms = c("...",
+              "...")
+           )
+
+
 
 ```
 
 ```{r glm_assumption_check}
-
+plot(m)
 
 ```
