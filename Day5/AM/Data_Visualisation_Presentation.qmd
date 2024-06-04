@@ -1,17 +1,22 @@
 ---
-title: "Plot Presentation"
+title: "Data Visualisation"
 author: "DCS"
-date: "`r Sys.Date()`"
-output: 
-  slidy_presentation:
+format: 
+  revealjs:
+    chalkboard: TRUE
     incremental: true
+    logo: cdcs_logo.JPG
+    footer: "[www.cdcs.co.uk](www.cdcs.co.uk)"
+editor: visual
 ---
+
 
 ```{r setup, echo = FALSE}
 
 library(extrafont) #additional fonts - not relevant in noteable 
 # font_import() #gain access to additional fonts - WARNING - will take a long time
-# loadfonts(device = "win") #load fonts into R
+loadfonts(device = "win") #load fonts into R
+
 
 
 library(tidyverse) # datat tidying
@@ -59,7 +64,8 @@ The recipe of a nice tasty plot includes:
 ## What does this mean?
 
 ```{r fancyplot, echo = FALSE}
-
+#| fig-width: 16
+#| fig-height: 9
 fancy_plot <-  Whisky_data %>% # assigning our code to "plot object"
   filter(category  == "Single Malt Scotch")%>% 
   count(Owner) %>%
@@ -111,7 +117,7 @@ ggplotly(fancy_plot)
 -   By itself, it looks like this:
 
 ```{r ggplot_function, echo = TRUE}
-
+#| output-location: column-fragment
 ggplot()
 ```
 
@@ -125,7 +131,10 @@ ggplot()
 ## Data Layer
 
 ```{r data_layer, echo = TRUE}
-
+#| code-line-numbers: "2"
+#| output-location: column-fragment
+#| fig-width: 10
+#| fig-height: 6
 
 # Regular data
 ggplot(data = Whisky_data)
@@ -143,7 +152,10 @@ ggplot(data = Whisky_data)
 ## Adding our coordinates
 
 ```{r coordinates, echo = TRUE}
-
+#| code-line-numbers: "3"
+#| output-location: column-fragment
+#| fig-width: 10
+#| fig-height: 6
 
 # Standard version
 ggplot(data = Whisky_data,
@@ -163,7 +175,10 @@ ggplot(data = Whisky_data,
 ## Graphic element of the plot {#sec-graphic-element-of-the-plot}
 
 ```{r geoms, echo = TRUE}
-
+#| code-line-numbers: "4"
+#| output-location: column-fragment
+#| fig-width: 8
+#| fig-height: 4
 
 # First Layer
 ggplot(data = Whisky_data,
@@ -172,7 +187,10 @@ ggplot(data = Whisky_data,
 ```
 
 ```{r geoms_2, echo = TRUE}
-
+#| code-line-numbers: "5"
+#| output-location: column-fragment
+#| fig-width: 10
+#| fig-height: 6
 # Second Layer
 ggplot(data = Whisky_data,
   aes(x = Region, y = review.point))+
@@ -192,7 +210,10 @@ ggplot(data = Whisky_data,
 ## Adding statistical layers
 
 ```{r geoms_3, echo = TRUE}
-
+#| code-line-numbers: "6|8"
+#| output-location: column-fragment
+#| fig-width: 10
+#| fig-height: 6
 # Second Layer
 ggplot(data = Whisky_data,
   aes(x = Region, y = review.point))+
@@ -216,7 +237,10 @@ ggplot(data = Whisky_data,
 ## Scaling our plots
 
 ```{r scaled_geoms, echo = TRUE}
-
+#| code-line-numbers: "2|3|4|5"
+#| output-location: column-fragment
+#| fig-width: 12
+#| fig-height: 6
 
 Whisky_data %>% # 
   filter(category  == "Single Malt Scotch") %>% #filter to include only single malt
@@ -237,7 +261,10 @@ ggplot(
 ## Scaling our plots
 
 ```{r scaled_geoms_2, echo = TRUE}
-
+#| code-line-numbers: "8|15|16|17|18|19"
+#| output-location: column-fragment
+#| fig-width: 12
+#| fig-height: 10
 
 Whisky_data %>% # 
   filter(category  == "Single Malt Scotch") %>% 
@@ -279,7 +306,10 @@ ggplot(
 ### Decluttering our code
 
 ```{r taming_code, echo = TRUE}
-
+#| code-line-numbers: "1|20"
+#| output-location: column-fragment
+#| fig-width: 10
+#| fig-height: 10
 plot <- Whisky_data %>% 
   filter(category  == "Single Malt Scotch") %>% 
   count(Owner) %>% 
@@ -305,6 +335,10 @@ plot
 ## Setting themes and color schemes
 
 ```{r themes_and_color_schemes, echo = TRUE}
+#| code-line-numbers: "2|3|4|5|6|7|8|9|10|11|12"
+#| output-location: column-fragment
+#| fig-width: 10
+#| fig-height: 10
 
 plot +
   scale_fill_manual(
@@ -335,7 +369,10 @@ plot +
 ## Setting themes and color schemes: Font
 
 ```{r themes_and_color_schemes_font, echo = TRUE}
-
+#| code-line-numbers: "9|13|14|15"
+#| output-location: column-fragment
+#| fig-width: 10
+#| fig-height: 10
 
 better_plot <- plot +
   scale_fill_manual(
@@ -360,6 +397,10 @@ better_plot
 ## Setting themes and color schemes - font
 
 ```{r lFont_change, echo = TRUE}
+#| code-line-numbers: "15|16"
+#| output-location: column-fragment
+#| fig-width: 10
+#| fig-height: 10
 
 better_plot <- plot +
   scale_fill_manual(
@@ -391,6 +432,10 @@ better_plot
 ## Labelling our plot
 
 ```{r labelled_plot, echo = TRUE}
+#| code-line-numbers: "3|4|5|6|7"
+#| output-location: column-fragment
+#| fig-width: 10
+#| fig-height: 10
 
 fancy_plot<- better_plot +
   labs(
@@ -404,7 +449,8 @@ fancy_plot
 ## Labelling our plot
 
 ```{r}
-
+#| fig-width: 16
+#| fig-height: 10
 fancy_plot
 ```
 
@@ -419,6 +465,9 @@ fancy_plot
 ## Bonus - Interactive plot
 
 ```{r interactive_plot, echo = TRUE}
+#| output-location: column-fragment
+#| fig-width: 12
+#| fig-height: 10
 
 p <-  Whisky_data %>% # assigning our code to "plot object"
   filter(category  == "Single Malt Scotch")%>% 
@@ -463,6 +512,9 @@ p # ggplotly(p)
 ## Bonus - Interactive plot
 
 ```{r}
+#| output-location: slide
+#| fig-width: 16
+#| fig-height: 9
 
 ggplotly(p)
 # this is the code
