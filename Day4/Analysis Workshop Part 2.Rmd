@@ -17,7 +17,11 @@ library(interactions) # make fancy interaction analyses easier
 library(naniar) # Missing data analysis
 library(readr) # read csv files
 
-tidied_whisky_data <- read_csv("~/CDCS/Summer_school_data/Data_analysis/tidied_whisky_data.csv")
+tidied_whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/tidied_whisky_data.csv")) %>% 
+  mutate(
+         # Wrangle your new variable here
+         ) %>%
+  mutate_if(is.character, as.factor)
 ```
 
 This morning, we covered null hypothesis testing, critically explored *p* values, t-tests, ANOVAs, and nested ANOVAS. We wont blame you if your brain is getting wiped out, and cant stand the thought of seeing ANOVA  ANOVA (sorry, not sorry for the pun...).
@@ -294,7 +298,7 @@ Generalized linear models are fit using the `glm( )` function. The form of the g
 
 Meanwhile, the table below gives an overview of the `glm()` family commands along with their associated link functions.  
 
-```{r}
+```{r glm_family_table}
 Family <- c("binomial", "gaussian", "Gamma", "inverse.gaussian", "poisson", "quasi", "quasibinomial", "quasipoisson")	
 Link_Function <- c('(link = "logit")','(link = "identity")', '(link = "inverse")','(link = "1/mu^2")', '(link = "log")', '(link = "identity", variance = "constant")' , '(link = "logit")','(link = "log")')	
 	
@@ -329,7 +333,8 @@ Here are some resources that might be useful if you wish to `glm()` with greater
 * [Beyond Multiple Linear Regression - Applied Generalized Linear Models and Multilevel Models in R (Roback & Legler, 2021)](https://bookdown.org/roback/bookdown-BeyondMLR/).
 * [Data Analysis in R - Generalised Linear Models Chapter (Midway, 2022)](https://bookdown.org/steve_midway/DAR/glms-generalized-linear-models.html)
 * [Stack Exchange Discussion on which glm family to use ](https://stats.stackexchange.com/questions/190763/how-to-decide-which-glm-family-to-use).
-* [Plotting GLM's (and other regression models!) is simple and easy with sjPlot](https://strengejacke.github.io/sjPlot/articles/plot_marginal_effects.html)
+* [Plotting GLM's (and other regression models!) is simple and easy with sjPlot](https://strengejacke.github.io/sjPlot/articles/plot_marginal_effects.html).
+* [Plotting and making GLM tables with prettyglm](https://jared-fowler.github.io/prettyglm/)
 
 ### Off you go!
 
