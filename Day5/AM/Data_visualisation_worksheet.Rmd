@@ -13,15 +13,19 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ## These are some recomeneded packages. Feel free to add more!
-library(tidyverse)
-library(ggpubr)
-library(ggthemes)
-library(gghalves)
+library(tidyverse) #data wrangling and ggplot
+library(ggpubr) # additional ggplot options
+library(ggthemes) #additional ggplot themes
+library(gghalves) # fancy half plots
+library(ggridges) #ridge plots
 library(ggsci) # color palletes for journals. Warning - this pallete drops NA's
 library(wesanderson) # Wes Anderson inspired color pallete. 
 library(extrafont) #additional fonts
-library(readr)
-library(gt)
+library(readr) # read csv
+library(gt) #pretty tables
+
+Whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/tidied_whisky_data.csv")) %>%
+  mutate_if(is.character, as.factor)
 
 ```
 
