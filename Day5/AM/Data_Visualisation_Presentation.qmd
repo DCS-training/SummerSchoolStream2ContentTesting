@@ -27,13 +27,8 @@ library(gghalves) # half plots - useful for distributions
 library(ggthemes) # Additional themes
 
 
-Whisky_data <- read_csv("Whisky_distillery_data.csv") %>% 
-  mutate(Owner = as.factor(Owner),
-         category = as.factor(category),
-         Distillery = as.factor(Distillery),
-         Location = as.factor(Location),
-         Region = as.factor(Region),
-         Founded = as.factor(Founded))
+Whisky_data <- rread_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/tidied_whisky_data.csv")) %>%
+  mutate_if(is.character, as.factor)
 
 ```
 
