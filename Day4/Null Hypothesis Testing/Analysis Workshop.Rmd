@@ -278,7 +278,7 @@ You have 10 minutes...
 go!
 
 ```{r wrangle_data}
-Whisky_data <- read_csv("tidied_whisky_data.csv") %>% 
+Whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/tidied_whisky_data.csv")) %>% 
   mutate(
          # Wrangle your new variable here
          ) %>%
