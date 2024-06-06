@@ -20,8 +20,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse) # data tidying
 library(broom) # tidy analysis outputs
 library(gt) # pretty tables
+library(easystats) # A package of useful stats packages! 
 library(correlation) # easy correlation tables
-library(gtsummary) # easy stratified tables
 library(report) # prints a standardised analysis report of your model (in APA)
 library(interactions) # make fancy interaction analyses easier
 library(naniar) # Missing data analysis
