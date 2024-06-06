@@ -13,18 +13,16 @@ editor: visual
 
 ```{r setup, echo = FALSE}
 
-library(extrafont) #additional fonts - not relevant in noteable 
+#install.packages(c("extrafont","plotly","gghalves" ))
+
+library(extrafont) #additional fonts - will not work in noteable, but useful for own device! 
 # font_import() #gain access to additional fonts - WARNING - will take a long time
-loadfonts(device = "win") #load fonts into R
+#loadfonts(device = "win") #load fonts into R - Mac users: change "win" to "all".
 
-
-
-library(tidyverse) # datat tidying
+library(tidyverse) # data tidying
 library(plotly) # interactive plot
-library(ggsci) # color palletes for journals. Warning - this pallete drops NA's
 library(gghalves) # half plots - useful for distributions
-#library(wesanderson) # Wes Anderson inspired color pallete. 
-library(ggthemes) # Additional themes
+
 
 
 Whisky_data <- rread_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/tidied_whisky_data.csv")) %>%
@@ -339,7 +337,7 @@ plot +
   scale_fill_manual(
     values = c(Speyside = "#6072A0", Lowland = "#C7AC59", Highland = "#6F3A7E", 
                Islay = "#A84046", Island = "#D40A9F", Campbeltown = "#3A8259" )) + #setting to discrete variables
-  theme_bw() + # from ggthemes
+  theme_bw() + # simpler theme
   theme(strip.background = # play with facet label
     element_rect(fill="#EAF3FD",# facet label fill
     color = "black"), #facet label border
