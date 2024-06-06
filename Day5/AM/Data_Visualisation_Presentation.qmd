@@ -100,7 +100,7 @@ ggplot(
     face = "bold")) + # choose bold/italics/default
   labs(x = "",
     y = "Online Review Scores",
-    title = "Whisky Review Scores by Region from the Top 3 largest Producers")
+    title = "Whisky Review Scores by Region from the Top 2 largest Producers")
   fancy_plot
 ggplotly(fancy_plot) 
 
@@ -436,7 +436,7 @@ fancy_plot<- better_plot +
   labs(
        x = "",
        y = "Review Scores",
-       title = "Whisky Review Scores by Region from the Top 3 largest Producers")
+       title = "Whisky Review Scores by Region from the Top 2 largest Producers")
 
 fancy_plot
 ```
@@ -499,7 +499,7 @@ p <-  Whisky_data %>% # assigning our code to "plot object"
         ) + 
   labs(x ="",
        y = "Online Review Scores",
-       title = "Whisky Review Scores by Region from the Top 3 largest Producers")
+       title = "Whisky Review Scores by Region from the Top 2 largest Producers")
 
 p # ggplotly(p)
 ```
