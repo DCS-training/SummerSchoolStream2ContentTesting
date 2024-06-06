@@ -17,15 +17,15 @@ knitr::opts_chunk$set(echo = TRUE)
 Before we start playing around we need to install the needed packages and load all the packages we need for the session
 
 ```{r Install Packages }
-#install.packages("tm") # Text Analysis
-#install.packages("topicmodels") #Topic modelling 
+install.packages("tm") # Text analysis package for corpus creation, cleaning, creation of document matrices, etc.
+install.packages("topicmodels") #Ready-to-use topic modelling tools and models
 
 ```
 
 ```{r Load Packages, echo=FALSE}
-library(tidyverse)#yes
-library(tm)#Yes
-library(topicmodels)#yes
+library(tidyverse)
+library(tm)
+library(topicmodels)
 
 ```
 
@@ -37,8 +37,12 @@ Parish <- read_csv("data/parish.csv")
 
 ## Pre-process
 
-The first thing to do is to extract the textual column we are going to use in this case the text from the parishes reports.
-Because the dataset is very large and we have limited power for this task we will look at a subset of the original dataset...just the data from Edinburgh
+The first thing to do is to extract the text column from the parish data.
+Because the dataset is very large and we have limited power for this task, we will look at a subset of the original dataset: just the data from Edinburgh.
+
+The pre-processing steps in this block might look a bit clunky.
+This is because the tm package maps each step of the cleaning process individually onto the corpus, and corpus objects themsleves are a bit clunky!
+When using other packages, such as tidyverse, these steps are almost always performed together in a loop.
 
 ```{r filter }
 ParishText<-Parish$text[Parish$Area=='Edinburgh']
@@ -49,7 +53,8 @@ head(ParishText,2)
 Prepare the data for analysis, creating and cleaning a tm Corpus object:
 
 ```{r pre process1}
-ParishCorpus <- VCorpus(VectorSource(ParishText))# transform our data set in a corpus
+ParishCorpus <- VCorpus(VectorSource(ParishText))# transform our data set to a corpus object
+
 ```
 
 Remove capitalisation
@@ -76,13 +81,14 @@ Remove numbers
 ParishCorpus <- tm_map (ParishCorpus, stripWhitespace)
 ```
 
-Now that our texts are tokenised and pre processed we can applied topic modelling on them
+Now that our texts are tokenised and pre processed, we can explore our corpus with topic modelling.
 
 ### Create a document term matrix (dtm) of the corpus.
 
-A DTM is a mathematical matrix that describes the frequency of terms that occur in a collection of documents.\
+A DTM is a mathematical matrix that describes the frequency of terms that occur in a collection of documents.
 Rows correspond to documents in the collection and columns correspond to terms.
-Summarise the occurrence of each word in the corpus, create a matrix, and print the 30 most frequent keywords.
+
+Let's summarise the occurrence of each word in the corpus, create a matrix, and print the 30 most frequent keywords.
 
 ```{r tp1 }
 LdaDtmParish <- DocumentTermMatrix(ParishCorpus)
@@ -125,7 +131,10 @@ LdaDtmParish_complete <- LdaDtmParish[complete_rows, ]
 
 ### Create the Topic Model
 
-Fit the LDA modelon 5 topics
+LDA (Latent Dirichlet Allocation) topic models are a type of statistical model that can help us identify ideas or patterns within a collection of documents.
+LDA models assume each document contains a number of topics and that each word in a document can be "sorted" into one of the document's topics.
+
+We'll fit an LDA model on 5 topics:
 
 ```{r tp6 }
 lda_model_5 <- LDA(LdaDtmParish_complete, k = 5, method = "Gibbs") #k is the number of topics to be created, and method is the type of LDA that will be performed
@@ -138,7 +147,8 @@ top_terms_5 <- terms(lda_model_5, 15)
 top_terms_5
 ```
 
-Now let's try with 10 topics
+Now let's try with 10 topics using the Gibbs sampling method.
+(In short, the Gibbs method uses a probability distribution to identify topics in a set of documents.)
 
 ```{r tp8}
 lda_model_10 <- LDA(LdaDtmParish_complete, k = 10, method = "Gibbs")
@@ -158,7 +168,8 @@ What can we observe about the effect of adding more topics?
 With your table, come up with a label for each topic.
 What can we learn about our data using LDA?
 
-Let's try to refine the results Let's remove some of the words appearing that aren't telling us much about the data, and re-run LDA:
+Let's refine the results by removing some of the words in the corpus that aren't telling us much about the data.
+Then, we will re-run LDA:
 
 ```{r tp12 }
 ParishCorpus2 <- tm_map(ParishCorpus, removeWords, c('edinburgh', 'parish', 'may', 'many', 'now', 'two', 'also', 'per', 'several'))
@@ -189,9 +200,13 @@ From a human perspective, did removing extra words improve the topic modelling a
 
 ### Explore association with a series of topics.
 
+Keyword associations show us which terms typically occur close to one another in a corpus.
+Therefore, we can use this method to identify patterns in our dataset.
+
 Print the terms associated with a keyword by correlation coefficient: (A correlation coefficient shows the strength of the relationship between two items on a scale of 0 to 1)
 
-First I need to reduce the min_freq
+First I need to reduce the min_freq, which will limit the analysis to words that occur at least two times in the dataset.
+When working with very large datasets---such as the full Parish data---you might find that a higher minimum frequency could generate more meaningful results.
 
 ```{r WRel1 }
 min_freq <- 2
@@ -210,7 +225,8 @@ findAssocs(LdaDtmParish, "newhaven", .25)
 
 ### Comparing two complete lists of associations
 
-We want to select the highest associations of one term and the lowest associations of another Create a new object containing our results
+One way to further explore keyword association is to explore the highest and lowest associations with a particular word.
+Let's try it:
 
 1.  Association with sea
 
@@ -229,8 +245,7 @@ AssociationCityCleaned<- data.frame(Term=rownames(AssociationCity), ValueCity=As
 
 ```
 
-Combining the data sets with the "merge" function (basically we are going to do what in datbase theory is called a join and in this case is a inner join).
-If you want to explore the different types of joins have a look here <https://www.w3schools.com/sql/sql_join.asp>
+Combining the data sets with the "merge" function (or "join" in database theory, in this case an inner join. You can read more about this function in tidyverse syntax here: <https://r4ds.hadley.nz/joins>)
 
 ```{r WRel5 }
 Merged_datasets <- merge(AssociationSeaCleaned, AssociationCityCleaned, by.x = 'Term', by.y = 'Term') 
