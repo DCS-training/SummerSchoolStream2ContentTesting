@@ -28,7 +28,7 @@ library(naniar) # Missing data analysis
 library(readr) # read csv files
 library(flextable)
 
-tidied_whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/tidied_whisky_data.csv")) %>% 
+tidied_whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/RMD_file_data/tidied_whisky_data.csv")) %>% 
   mutate(
          # Wrangle your new variable here
          ) %>%
