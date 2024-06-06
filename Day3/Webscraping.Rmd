@@ -26,7 +26,9 @@ library(rvest)
 
 First let's explore it (<https://www.connosr.com/>)[<https://www.connosr.com/>]
 
-Ok so what is the structure we are looking at ![StructureWebsite](images/WebsiteStructure.jpg) \## Level 1: homepage level
+Ok so what is the structure we are looking at ![StructureWebsite](images/WebsiteStructure.jpg)
+
+## Level 1: homepage level
 
 We established that the first level of our information is on the (Scotch Whiskys sub-folder)[<https://www.connosr.com/scotch-whisky>] and that would be the first object we need to set
 
@@ -363,3 +365,5 @@ WithDistInfoS<- merge(List_of_whisky_distilleries, filtered_Reviews, by= "Distil
 
 write_csv(WithDistInfoS,"ReviewWithDistilleriesInfoS.csv")
 ```
+
+# THE END

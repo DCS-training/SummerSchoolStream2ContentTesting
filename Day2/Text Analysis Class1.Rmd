@@ -1,6 +1,6 @@
 ---
 title: "Text Analysis"
-author: "Jessica Wittie"
+author: "Jessica Witte"
 date: "`r Sys.Date()`"
 output: html_document
 ---
@@ -11,22 +11,21 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Install and Load the required Libraries
 
-Below is the list of the packages that are needed for this class. Remember that if you are working on your machine you need to install the packages once and upload them every time that you close and open again R Studio. If you are working on Noteable you will have to re-install the packages at every new instance because they would not be retrained by the server
+Below is the list of the packages that are needed for this class. Remember that if you are working on your machine you only need to install the packages once, but need to upload them every time that you open a new RStudio environment. If you are working on Noteable, you will have to install the packages every time you open the environment.
 
-First the package installation
+First, the package installation:
 
-```{Install Packages,echo=FALSE}
-install.packages("quanteda")
-install.packages("quanteda.textplots")
-install.packages("quanteda.textmodels")
-install.packages("lexicon")
+```{r Install Packages,echo=FALSE, results='hide'}
+#install.packages("quanteda")
+#install.packages("quanteda.textplots")
+#install.packages("quanteda.textmodels")
+#install.packages("lexicon")
 ```
 
-Then we mount them
+Import the packages:
 
-```{r Mount the needed packages, results='hide'}
-
-library(quanteda) #quanteda is an R package for managing and analyzing text
+```{r Import the required packages, results='hide'}
+library(quanteda) #quanteda is an R package for managing and analysing text
 library(quanteda.textplots)#Plotting functions for visualising textual data. Extends 'quanteda' and related packages with plot methods designed specifically for text data
 library(quanteda.textmodels)#Scaling models and classifiers for sparse matrix objects representing textual data in the form of a document-feature matrix.
 library(lexicon)#A collection of lexical hash tables, dictionaries, and word lists
@@ -42,15 +41,15 @@ The first thing we need to do is to load the cleaned data set that we created ye
 Parish<-read_csv("data/parish.csv")
 ```
 
-## Look around the Dataset
+## Exploring the Dataset
 
-Let's refresh what we have in it
+Let's review what's in our dataset:
 
 ```{r summary, echo=TRUE}
 summary(Parish)
 ```
 
-This does not make much sense since we are looking at a fully textual dataset. The next thing we need to do is to create a corpus out of the text column (that contains the text of each parish report)
+Because we are working with a fully textual dataset, these metrics don't tell us much. To explore the text itself, we'll need to create a corpus out of the text column (that contains the text of each parish report)
 
 ```{r Corpus, echo=TRUE}
 CorpusStat<-corpus(Parish$text)
@@ -58,7 +57,7 @@ CorpusStat<-corpus(Parish$text)
 
 Some methods for extracting information about the corpus:
 
-Print doc in position 5 of the corpus
+Print the document in the fifth position of the corpus
 
 ```{r First 5 texts, echo=TRUE}
 summary(CorpusStat, 5)
@@ -89,7 +88,7 @@ NtokenStats<-as.vector(ntoken(CorpusStat))
 TokenScotland <-data.frame(Tokens=NtokenStats, title=Parish$title, Area=Parish$Area, Parish=Parish$Parish)
 ```
 
-Now we want to explore the parish data by geographic area. We can do that with pipes
+Now, we want to explore the parish data by geographic area. We can do that with pipes, which allow us to perform several tasks in one block of code:
 
 ```{r Pipe1, echo=TRUE}
 BreakoutScotland<- TokenScotland %>%
@@ -143,13 +142,13 @@ Remove tokens under 3 characters. (Shorter words won't tell us much about our da
 Report_tokens <- tokens_select(Report_tokens, min_nchar = 3)
 ```
 
-Remove the stop word. Stop words are a set of commonly used words in a language. Examples of stop words in English are "a," "the," "is," "are," etc. Stop words are commonly used in Text Mining and Natural Language Processing (NLP) to eliminate words that are so widely used that they carry very little useful information.
+Remove the stopwords in our corpus. Stopwords are a set of commonly used "filler" or modifying words in a language. Examples of stopwords in English are "a," "the," "is," "are," etc. Stopword removal is a common pre-processing task in natural language processing (NLP) that aims to improve the that are so widely used that they carry very little useful information.
 
 ```{r StopWords, echo=TRUE}
 Report_tokens <-tokens_remove(Report_tokens, c(stopwords("english"), "statistical", "account", "parish", "one", "years"))
 ```
 
-## Visualise the results of the tokenisation
+## Visualise the Results of the Tokenisation
 
 First I need to convert to document-feature matrix (aka "dfm")
 
@@ -173,9 +172,9 @@ textplot_wordcloud(dfm_Report, rotation = 0.25,
 
 ## Further Cleaning the Dataset
 
-Further steps for cleaning: stemming vs. lemmatization
+Preprocessing steps known as stemming and lemmatisation may further improve the results of NLP for a dataset. Stemming aims to reduce a word to its "stem" in acknowledgment that word endings often don't tell us much about a particular corpus. So, for instance, stemming assumes "run" and "running" serve the same purposes for a particular research question. Lemmatisation follows the same logic behind stemming, but aims to be more accurate and truer to the language.
 
-### Stemming
+Stemming
 
 ```{r Stemming, echo=TRUE}
 nostop_toks <- tokens_select(Report_tokens, pattern = stopwords("en"), selection = "remove")
@@ -256,7 +255,7 @@ Merged <-merge(Whisky,TokenScotland, by.x="docname", by.y="ID")
 Merged$NewText<-paste(Merged$pre,Merged$keyword, Merged$post)
 ```
 
-Now I want to see which area of Scotland contains the most keyword matches for 'witch,' 'spell,' 'enchantment,' or 'magic.' I can do this by using pipes again:
+Now I want to see which area of Scotland contains the most keyword matches for drunk","intemperance","wisky\|whisky\|whiskey\|whysky", "alembic", "spirit". I can do this by using pipes again:
 
 ```{r Pipe witches, echo=TRUE}
 BreakoutWhisky<- Merged %>%

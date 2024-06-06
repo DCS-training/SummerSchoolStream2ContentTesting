@@ -41,13 +41,13 @@ knitr::opts_chunk$set(echo = TRUE)
 Before we start playing around we need to install the needed packages
 and load all the packages we need for the session
 
-```{r Install Packages }
+```{r Install Packages, results='hide'}
 #install.packages("syuzhet") # Sentiment Analysis package
+#install.packages("dplyr")
 #install.packages("tidytext") # Text Analysis 
 #install.packages("Polychrome") # Palette
 #install.packages("wordcloud")# wordcloud
-#install.packages("quanteda.sentiment") # Sentiment Analysis Package within Quanteda
-
+#remotes::install_github("quanteda/quanteda.sentiment")3
 ```
 
 ```{r Load Packages, echo=FALSE}
@@ -164,7 +164,7 @@ ggplot(long_dataWhisky_Sentiments, aes(x = sentiment, y=value, fill=sentiment)) 
   facet_wrap(~Region, scales = "free_y") #subset by region and free the y axis
 ```
 
-###Exercise one
+### Exercise one
 
 Plot it subdividing by ownership of the distilleries.
 
@@ -188,10 +188,16 @@ Lowland<-subset(WhiskyReview, Region=="Lowland" )
 Then we need to tokenise the new dataset
 
 ```{r Syuzhet9}
-words_list <- Lowland %>%
-  unnest_tokens(word, Reviews) %>%
-  filter(nchar(word) >3 & !str_detect(word, "^[0-9]+$")) %>%
+tokens <- Lowland %>%
+  unnest_tokens(word, Reviews)
+
+filtered_tokens <- tokens %>%
+  filter(nchar(word) > 3 & !str_detect(word, "^[0-9]+$"))
+
+words_list <- filtered_tokens %>%
   pull(word)
+
+
 ```
 
 Now we can re run the nrc sentiment function
@@ -603,4 +609,4 @@ ggplot(data_long, aes(x = doc_id, y = value, color = Rate_Sentiment,group = Rate
 Which method do you think is more accurate or better better reflect the
 rate given to the bottle ?
 
-## The End
+## THE END
