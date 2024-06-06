@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 #install.packages("report")
 #install.packages("interactions")
 #install.packages( "naniar")
-install.packages("flextable")
+#install.packages("flextable")
 ```
 ```{r, setup_2, include=FALSE, echo = FALSE}
 library(tidyverse) # data tidying
