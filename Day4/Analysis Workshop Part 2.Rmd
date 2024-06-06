@@ -306,7 +306,7 @@ Generalized linear models are fit using the `glm( )` function. The form of the g
 
 ```
 
-Meanwhile, the table below gives an overview of the `glm()` family commands along with their associated link functions.
+Meanwhile, the table below gives an overview of the `glm()` family commands along with their associated link functions. To make the table,we will be using the `gt()` functions once again, as `gt()` makes things pretty and readable.
 
 ```{r glm_family_table}
 Family <- c("binomial", "gaussian", "Gamma", "inverse.gaussian", "poisson", "quasi", "quasibinomial", "quasipoisson")	
