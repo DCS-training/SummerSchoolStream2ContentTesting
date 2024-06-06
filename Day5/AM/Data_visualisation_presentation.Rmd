@@ -7,24 +7,24 @@ output:
     incremental: true
 ---
 
-```{r setup, echo = FALSE, message= FALSE, warning= FALSE}
+```{r setup, echo = FALSE}
 
 library(extrafont) #additional fonts - not relevant in noteable 
-#loadfonts(device="win") - will not work in notable
+# font_import() #gain access to additional fonts - WARNING - will take a long time
+# loadfonts(device = "win") #load fonts into R
+
+
 library(tidyverse) # datat tidying
 library(plotly) # interactive plot
 library(ggsci) # color palletes for journals. Warning - this pallete drops NA's
 library(gghalves) # half plots - useful for distributions
-library(wesanderson) # Wes Anderson inspired color pallete. 
+#library(wesanderson) # Wes Anderson inspired color pallete. 
 library(ggthemes) # Additional themes
-#library(ThemePark) # Fun themes # run remotes::install_github("MatthewBJane/ThemePark") in console first to access
-Whisky_data <- read_csv("Whisky_distillery_data.csv") %>% 
-  mutate(Owner = as.factor(Owner),
-         category = as.factor(category),
-         Distillery = as.factor(Distillery),
-         Location = as.factor(Location),
-         Region = as.factor(Region),
-         Founded = as.factor(Founded))
+
+
+Whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/tidied_whisky_data.csv")) %>%
+  mutate_if(is.character, as.factor)
+
 ```
 
 ## Grammar of Graphics {#sec-grammar-of-graphics}
@@ -53,16 +53,16 @@ The recipe of a nice tasty plot includes:
 
 ## What does this mean?
 
-```{r fancyplot, echo = FALSE, warning = FALSE, message = FALSE}
-#| fig-width: 16
-#| fig-height: 8
-fancy_plot <-  Whisky_data %>% 
+```{r fancyplot, echo = FALSE}
+
+fancy_plot <-  Whisky_data %>% # assigning our code to "plot object"
   filter(category  == "Single Malt Scotch")%>% 
   count(Owner) %>%
-  top_n(n = 3) %>% 
+  top_n(n = 2) %>% 
   left_join(Whisky_data) %>%
 ggplot(
   aes(x = Region, y = review.point, fill = Region)) + 
+ # geom_violin() +
   geom_boxplot()+
   stat_summary(fun.data = mean_se,
     color = "black", linewidth = 1, size = 1)+
@@ -71,25 +71,32 @@ ggplot(
   facet_wrap(~reorder(Owner, -n), 
     ncol = 1, 
     scales = "free_y", 
-    strip.position = "bottom") +
+    strip.position = "top") +#
   coord_flip()+
   scale_fill_manual(
-    values = c(Speyside = "#576884", Lowland = "#BE8B5E", Highland = "#46415F", 
-               Islay = "#8D4046", Island = "#8A5366", Campbeltown = "#395558" )) + 
+    values = c(Speyside = "#6072A0", Lowland = "#C7AC59", Highland = "#6F3A7E", 
+               Islay = "#A84046", Island = "#D40A9F", Campbeltown = "#3A8259" )) + 
   theme_bw() + 
   theme(strip.background = 
-    element_rect(fill="#BAB8BD",
+    element_rect(fill="#EAF3FD",
     color = "black",
-    size =.8),
-    text= element_text( 
-    size=12, 
-    family="Palatino Linotype", 
-    face = "bold")) + 
+    linewidth = .7),
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    panel.background = element_rect(fill = '#F9F9F9', colour = 'black'),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = "top",
+    text= element_text( # command to control text
+    size=12, #font size
+    family="Franklin Gothic Medium", #font style
+    face = "bold")) + # choose bold/italics/default
   labs(x = "",
     y = "Online Review Scores",
     title = "Whisky Review Scores by Region from the Top 3 largest Producers")
-  
-ggplotly(fancy_plot)
+  fancy_plot
+ggplotly(fancy_plot) 
 
 ```
 
@@ -98,8 +105,8 @@ ggplotly(fancy_plot)
 -   Our first call is to use the function `ggplot()`
 -   By itself, it looks like this:
 
-```{r ggplot_function, echo = TRUE,warning = FALSE, message = FALSE}
-#| output-location: column-fragment
+```{r ggplot_function, echo = TRUE}
+
 ggplot()
 ```
 
@@ -112,11 +119,8 @@ ggplot()
 
 ## Data Layer
 
-```{r data_layer, echo = TRUE, warning = FALSE}
-#| code-line-numbers: "2"
-#| output-location: column-fragment
-#| fig-width: 10
-#| fig-height: 6
+```{r data_layer, echo = TRUE}
+
 
 # Regular data
 ggplot(data = Whisky_data)
@@ -133,11 +137,8 @@ ggplot(data = Whisky_data)
 
 ## Adding our coordinates
 
-```{r coordinates, echo = TRUE, warning = FALSE}
-#| code-line-numbers: "3"
-#| output-location: column-fragment
-#| fig-width: 10
-#| fig-height: 6
+```{r coordinates, echo = TRUE}
+
 
 # Standard version
 ggplot(data = Whisky_data,
@@ -156,11 +157,8 @@ ggplot(data = Whisky_data,
 
 ## Graphic element of the plot {#sec-graphic-element-of-the-plot}
 
-```{r geoms, echo = TRUE, warning = FALSE}
-#| code-line-numbers: "4"
-#| output-location: column-fragment
-#| fig-width: 8
-#| fig-height: 4
+```{r geoms, echo = TRUE}
+
 
 # First Layer
 ggplot(data = Whisky_data,
@@ -168,11 +166,8 @@ ggplot(data = Whisky_data,
   geom_half_boxplot()
 ```
 
-```{r geoms_2, echo = TRUE, warning = FALSE}
-#| code-line-numbers: "5"
-#| output-location: column-fragment
-#| fig-width: 10
-#| fig-height: 6
+```{r geoms_2, echo = TRUE}
+
 # Second Layer
 ggplot(data = Whisky_data,
   aes(x = Region, y = review.point))+
@@ -191,11 +186,8 @@ ggplot(data = Whisky_data,
 
 ## Adding statistical layers
 
-```{r geoms_3, echo = TRUE, warning = FALSE}
-#| code-line-numbers: "6|8"
-#| output-location: column-fragment
-#| fig-width: 10
-#| fig-height: 6
+```{r geoms_3, echo = TRUE}
+
 # Second Layer
 ggplot(data = Whisky_data,
   aes(x = Region, y = review.point))+
@@ -218,16 +210,13 @@ ggplot(data = Whisky_data,
 
 ## Scaling our plots
 
-```{r scaled_geoms, echo = TRUE, warning = FALSE}
-#| code-line-numbers: "2|3|4|5"
-#| output-location: column-fragment
-#| fig-width: 12
-#| fig-height: 6
+```{r scaled_geoms, echo = TRUE}
+
 
 Whisky_data %>% # 
   filter(category  == "Single Malt Scotch") %>% #filter to include only single malt
   count(Owner) %>% # counting Owner
-  top_n(n = 3) %>% # set n so we get top 3 Owners by count
+  top_n(n = 2) %>% # so we get top 2 Owners by count
   left_join(Whisky_data) %>%  # joining back to data
 ggplot(
   aes(x = Region, y = review.point))+
@@ -242,16 +231,13 @@ ggplot(
 
 ## Scaling our plots
 
-```{r scaled_geoms_2, echo = TRUE, warning = FALSE}
-#| code-line-numbers: "8|15|16|17|18|19"
-#| output-location: column-fragment
-#| fig-width: 12
-#| fig-height: 10
+```{r scaled_geoms_2, echo = TRUE}
+
 
 Whisky_data %>% # 
   filter(category  == "Single Malt Scotch") %>% 
   count(Owner) %>% 
-  top_n(n = 3) %>% 
+  top_n(n = 2) %>% 
   left_join(Whisky_data) %>% 
 ggplot(
   aes(x = Region, y = review.point, 
@@ -287,15 +273,12 @@ ggplot(
 
 ### Decluttering our code
 
-```{r taming_code, echo = TRUE, warning = FALSE}
-#| code-line-numbers: "1|18"
-#| output-location: column-fragment
-#| fig-width: 10
-#| fig-height: 10
+```{r taming_code, echo = TRUE}
+
 plot <- Whisky_data %>% 
   filter(category  == "Single Malt Scotch") %>% 
   count(Owner) %>% 
-  top_n(n = 3) %>% 
+  top_n(n = 2) %>% 
   left_join(Whisky_data) %>% 
 ggplot(
   aes(x = Region, y = review.point, fill = Region))+
@@ -316,21 +299,20 @@ plot
 
 ## Setting themes and color schemes
 
-```{r themes_and_color_schemes, echo = TRUE, warning = FALSE}
-#| code-line-numbers: "2|3|4|5|6|7|8|9"
-#| output-location: column-fragment
-#| fig-width: 10
-#| fig-height: 10
+```{r themes_and_color_schemes, echo = TRUE}
 
 plot +
   scale_fill_manual(
-    values = c(Speyside = "#576884", Lowland = "#BE8B5E", Highland = "#46415F", 
-               Islay = "#8D4046", Island = "#8A5366", Campbeltown = "#395558" )) + #setting to discrete variables
+    values = c(Speyside = "#6072A0", Lowland = "#C7AC59", Highland = "#6F3A7E", 
+               Islay = "#A84046", Island = "#D40A9F", Campbeltown = "#3A8259" )) + #setting to discrete variables
   theme_bw() + # from ggthemes
   theme(strip.background = # play with facet label
-    element_rect(fill="#BAB8BD",# facet label fill
+    element_rect(fill="#EAF3FD",# facet label fill
     color = "black"), #facet label border
-    legend.position = "bottom" # change legend position
+    legend.position = "bottom", # change legend position,
+    panel.background = element_rect(fill = '#F9F9F9', colour = 'black'), # background and border
+    panel.grid.major = element_blank(), # removing gridlines
+    panel.grid.minor = element_blank()  # removing gridlines
         ) 
 ```
 
@@ -347,21 +329,21 @@ plot +
 
 ## Setting themes and color schemes: Font
 
-```{r themes_and_color_schemes_font, echo = TRUE, warning = FALSE}
-#| code-line-numbers: "9|10|11|12|13"
-#| output-location: column-fragment
-#| fig-width: 10
-#| fig-height: 10
+```{r themes_and_color_schemes_font, echo = TRUE}
+
 
 better_plot <- plot +
   scale_fill_manual(
-    values = c(Speyside = "#576884", Lowland = "#BE8B5E", Highland = "#46415F", 
-               Islay = "#8D4046", Island = "#8A5366", Campbeltown = "#395558" )) + 
+    values = c(Speyside = "#6072A0", Lowland = "#C7AC59", Highland = "#6F3A7E", 
+               Islay = "#A84046", Island = "#D40A9F", Campbeltown = "#3A8259" )) + 
   theme_bw() + 
   theme(strip.background = 
-    element_rect(fill="#BAB8BD",
+    element_rect(fill="#EAF3FD",
     color = "black"),
     legend.position = "bottom",
+    panel.background = element_rect(fill = '#F9F9F9', colour = 'black'),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
     text= element_text( # command to control text
     size=16, #font size
     family="Comic Sans MS") #font style
@@ -372,25 +354,24 @@ better_plot
 
 ## Setting themes and color schemes - font
 
-```{r lFont_change, echo = TRUE, warning = FALSE}
-#| code-line-numbers: "12|13"
-#| output-location: column-fragment
-#| fig-width: 10
-#| fig-height: 10
+```{r lFont_change, echo = TRUE}
 
 better_plot <- plot +
   scale_fill_manual(
-    values = c(Speyside = "#576884", Lowland = "#BE8B5E", Highland = "#46415F", 
-               Islay = "#8D4046", Island = "#8A5366", Campbeltown = "#395558" )) + 
+    values = c(Speyside = "#6072A0", Lowland = "#C7AC59", Highland = "#6F3A7E", 
+               Islay = "#A84046", Island = "#D40A9F", Campbeltown = "#3A8259" )) + 
   theme_bw() + 
   theme(strip.background = 
-    element_rect(fill="#BAB8BD",
+    element_rect(fill="#EAF3FD",
     color = "black"),
     legend.position = "none", # dropping legend, as label is clear
+    panel.background = element_rect(fill = '#F9F9F9', colour = 'black'),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
     text= element_text( # command to control text
     size=16, #font size
-    family="Palatino Linotype", #font style
-    face = "bold") # choose bold/italics/default
+    family="Franklin Gothic Medium", #font style
+    face = "bold"), # choose bold/italics/default
         ) 
 
 better_plot
@@ -404,11 +385,7 @@ better_plot
 
 ## Labelling our plot
 
-```{r labelled_plot, echo = TRUE, warning = FALSE}
-#| code-line-numbers: "3|4|5|6|7"
-#| output-location: column-fragment
-#| fig-width: 10
-#| fig-height: 10
+```{r labelled_plot, echo = TRUE}
 
 fancy_plot<- better_plot +
   labs(
@@ -421,9 +398,8 @@ fancy_plot
 
 ## Labelling our plot
 
-```{r, warning = FALSE}
-#| fig-width: 16
-#| fig-height: 10
+```{r}
+
 fancy_plot
 ```
 
@@ -437,23 +413,19 @@ fancy_plot
 
 ## Bonus - Interactive plot
 
-```{r interactive_plot, echo = TRUE, warning = FALSE}
-#| output-location: column-fragment
-#| fig-width: 12
-#| fig-height: 8
+```{r interactive_plot, echo = TRUE}
 
 p <-  Whisky_data %>% # assigning our code to "plot object"
   filter(category  == "Single Malt Scotch")%>% 
   count(Owner) %>%
-  top_n(n = 3) %>% # set n
+  top_n(n = 2) %>% 
   left_join(Whisky_data) %>%
   ggplot(
     aes(x = Region, y = review.point, fill = Region))+
-      geom_boxplot(size = .5, width = .2)+ 
-    geom_violin(side = "r", alpha = .7) +
+      geom_boxplot()+ 
   scale_fill_manual(
-    values = c(Speyside = "#576884", Lowland = "#BE8B5E", Highland = "#46415F", 
-               Islay = "#8D4046", Island = "#8A5366", Campbeltown = "#395558" )) +
+    values = c(Speyside = "#6072A0", Lowland = "#C7AC59", Highland = "#6F3A7E", 
+               Islay = "#A84046", Island = "#D40A9F", Campbeltown = "#3A8259" )) +
     stat_summary(fun.data = mean_se, 
       color = "black", linewidth = 1, size = 1)+
     stat_summary(fun.data = mean_se, 
@@ -465,24 +437,27 @@ p <-  Whisky_data %>% # assigning our code to "plot object"
   coord_flip() + 
   theme_bw()+
   theme(strip.background = 
-    element_rect(fill="#BAB8BD",
+    element_rect(fill="#EAF3FD",
     color = "black",
-    size = .8),
+    linewidth = .4),
     text= element_text( # command to control text
     size=16, #font size
-    family="Palatino Linotype", #font style
-    face = "bold") # choose bold/italics/default
-        ) 
+    family="Franklin Gothic Medium", #font style
+    face = "bold"), # choose bold/italics/default
+    panel.background = element_rect(fill = '#F9F9F9', colour = 'black'),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+        ) + 
+  labs(x ="",
+       y = "Online Review Scores",
+       title = "Whisky Review Scores by Region from the Top 3 largest Producers")
 
 p # ggplotly(p)
 ```
 
 ## Bonus - Interactive plot
 
-```{r warning = FALSE}
-#| output-location: slide
-#| fig-width: 12
-#| fig-height: 8
+```{r}
 
 ggplotly(p)
 # this is the code
