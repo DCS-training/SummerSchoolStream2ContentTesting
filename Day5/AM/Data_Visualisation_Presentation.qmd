@@ -339,7 +339,7 @@ plot +
   scale_fill_manual(
     values = c(Speyside = "#6072A0", Lowland = "#C7AC59", Highland = "#6F3A7E", 
                Islay = "#A84046", Island = "#D40A9F", Campbeltown = "#3A8259" )) + #setting to discrete variables
-  theme_bw() + # from ggthemes
+  theme_bw() + # simpler theme
   theme(strip.background = # play with facet label
     element_rect(fill="#EAF3FD",# facet label fill
     color = "black"), #facet label border
