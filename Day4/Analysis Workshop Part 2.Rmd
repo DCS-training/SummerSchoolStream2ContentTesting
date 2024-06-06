@@ -7,6 +7,10 @@ output: word_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+#install.packages("ggplot2", dependencies = TRUE) #This needs to run first, so that `interactions` will work.
+
+#install.packages(c("broom","gt","correlation", "gtsummary", "report", "interactions", "naniar"))
+
 library(tidyverse) # data tidying
 library(broom) # tidy analysis outputs
 library(gt) # pretty tables
