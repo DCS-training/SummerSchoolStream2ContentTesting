@@ -222,7 +222,8 @@ interact_plot(m_int,
               plot.points = TRUE,
              # colors = "CUD Bright",
               jitter = TRUE
-              )
+              ) +
+theme_dark()
 
 ```
 
