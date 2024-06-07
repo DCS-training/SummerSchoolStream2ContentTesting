@@ -15,7 +15,19 @@ Below is the list of the packages that are needed for this class. Remember that 
 
 First, the package installation:
 
-```{r Install Packages,echo=FALSE, results='hide'}
+For Noteable
+
+```{r Install Packages,echo=FALSE, results='hide', warning=FALSE, message=FALSE}
+#install.packages("quanteda")
+install.packages("quanteda.textplots")
+install.packages("quanteda.textmodels",dependencies = TRUE, INSTALL_opts = '--no-lock')
+#install.packages("lexicon")
+```
+
+For Posit
+
+```{r Install Packages Posit,echo=FALSE, results='hide', warning=FALSE, message=FALSE}
+#install.packages("tidyverse")#only if not on the server already from yesterday
 #install.packages("quanteda")
 #install.packages("quanteda.textplots")
 #install.packages("quanteda.textmodels")
@@ -24,13 +36,12 @@ First, the package installation:
 
 Import the packages:
 
-```{r Import the required packages, results='hide'}
+```{r Import the required packages, results='hide', warning=FALSE, message=FALSE}
 library(quanteda) #quanteda is an R package for managing and analysing text
 library(quanteda.textplots)#Plotting functions for visualising textual data. Extends 'quanteda' and related packages with plot methods designed specifically for text data
 library(quanteda.textmodels)#Scaling models and classifiers for sparse matrix objects representing textual data in the form of a document-feature matrix.
 library(lexicon)#A collection of lexical hash tables, dictionaries, and word lists
 library(tidyverse)# The tidyverse is a collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.https://www.tidyverse.org/
-#library (tm) #A framework for text mining applications within R.
 ```
 
 ## Import the Dataset
@@ -401,4 +412,4 @@ data.frame(list(term = names(top_keys), frequency = unname(top_keys))) %>% # Cre
 
 5.  Thinking about the text analysis methods we practiced today, can you think of an example (perhaps from your research) of a use case for one of these methods?
 
-# THE END
+### End of this Block

@@ -17,6 +17,15 @@ A web crawler, crawler or web spider, is a computer program that's used to searc
 
 The first thing that we need is to call the library we need
 
+
+Only if you are running on Posit
+```{r installPosit, warning=FALSE, message=FALSE}
+#install.packages("tidyverse")#only if not on the server already from yesterday
+#install.packages("rvest")#Webcrawling
+```
+
+
+Load the libraries
 ```{r libraries}
 library(tidyverse)
 library(rvest)

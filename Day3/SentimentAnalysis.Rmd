@@ -41,16 +41,34 @@ knitr::opts_chunk$set(echo = TRUE)
 Before we start playing around we need to install the needed packages
 and load all the packages we need for the session
 
+On Noteable
+
 ```{r Install Packages, results='hide'}
 #install.packages("syuzhet") # Sentiment Analysis package
-#install.packages("dplyr")
 #install.packages("tidytext") # Text Analysis 
 #install.packages("Polychrome") # Palette
 #install.packages("wordcloud")# wordcloud
-#remotes::install_github("quanteda/quanteda.sentiment")3
+#remotes::install_github("quanteda/quanteda.sentiment")#3
 ```
 
+On Posit
+
+```{r Install Packages Posit, results='hide'}
+#install.packages("tidyverse")#only if not on the server already from yesterday
+#install.packages("syuzhet") # Sentiment Analysis package
+#install.packages("tidytext") # Text Analysis 
+#install.packages("Polychrome") # Palette
+#install.packages("wordcloud")# wordcloud
+#install.packages("quanteda")# quanteda
+#remotes::install_github("quanteda/quanteda.sentiment")#3
+#install.packages("RColorBrewer")# Colour palette
+```
+
+Load the Libraries NB you need to restart R before doing the library bit
+or there will be dependencies errors
+
 ```{r Load Packages, echo=FALSE}
+library(dplyr)
 library(tidyverse)
 library(syuzhet)
 library(RColorBrewer)
@@ -584,7 +602,6 @@ ggplot(data_long, aes(x = doc_id, y = value, color = Rate_Sentiment,group = Rate
     axis.ticks.x = element_blank()   # Remove x-axis tick marks
   )
 
-
 ```
 
 Plot the graph but this time by region
@@ -609,4 +626,4 @@ ggplot(data_long, aes(x = doc_id, y = value, color = Rate_Sentiment,group = Rate
 Which method do you think is more accurate or better better reflect the
 rate given to the bottle ?
 
-## THE END
+## End of this Block!

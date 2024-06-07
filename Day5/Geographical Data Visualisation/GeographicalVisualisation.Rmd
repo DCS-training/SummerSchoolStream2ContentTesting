@@ -20,20 +20,43 @@ Below is the setting up for this class (install packages, mount packages, import
 
 Libraries we need to install (remember to uncomment before running)
 
+On Noteable
+
 ```{r Install}
 # Set a CRAN mirror
 options(repos = c(CRAN = "https://cran.r-project.org"))
 
-install.packages("tmap")
-install.packages("adehabitatHR")
+#install.packages("tmap")
+#install.packages("adehabitatHR")
 
+```
+
+On Posit
+
+```{r Install Posit}
+# Set a CRAN mirror
+options(repos = c(CRAN = "https://cran.r-project.org"))
+
+#install.packages("tmap")
+#install.packages("adehabitatHR")
+#install.packages("rgdal")
+#install.packages("rgeos")
+l#install.packages("sp")
+#install.packages("tmap")
+#install.packages("tidyverse")
+#install.packages("RColorBrewer")
+#install.packages("classInt")
+#install.packages("maptools")
+#install.packages("png")
+#install.packages("raster")
+#install.packages("tmaptools")
 ```
 
 #### Load Libraries
 
 Load the packages we need
 
-```{r load}
+```{r load, results='hide', warning=FALSE, message=FALSE}
 library(rgdal)
 library(rgeos)
 library(sp)
@@ -68,7 +91,7 @@ Developed by the Open Geospatial Consortium (OGC), it serves as a container for 
 readOGR Function: \* from rgdal package that reads vector spatial data.
 \* dsn = data source name, essentially the file name and the folder path
 
-```{r Gpkg1 }
+```{r Gpkg1, warning=FALSE}
 ParishesGeo <- readOGR(dsn = "data/Spatial/Parishes.gpkg")
 plot(ParishesGeo, main = "Scottish Parishes")
 ```
@@ -242,11 +265,10 @@ For style, there are three basic methods ("equal", "sd" and "quantile").
 Number of intervals can be controlled with n.
 
 ```{r }
-breaks <- classIntervals(MergedGeo$per, n = 5, style = "equal")
-breakpoints <- breaks$brks
+breaks <- classIntervals(MergedGeo$per, n = 5, style = "equal")breakpoints <- breaks$brks
 spplot(MergedGeo, 
        "per", 
-       col.regions = color.palette(5), 
+       col.regions = color.palette, 
        colorkey = list(at = breakpoints)
        )
 
@@ -596,3 +618,5 @@ spplot(MergedGeo3,
 )
 
 ```
+
+**This is the End of our Week! Congratulations! you made till the very end**

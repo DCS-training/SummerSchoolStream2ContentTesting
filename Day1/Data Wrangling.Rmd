@@ -5,12 +5,29 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-```{r Install}
+### Install Packages and set up
+
+On Noteable
+
+```{r Install, warning=FALSE, results='hide', message=FALSE}
 #install.packages("naniar") # used to work with missing data
 #install.packages("fuzzyjoin")  # Merging messy data
 #install.packages("gt")
 
 ```
+
+On Noteable
+
+```{r Install2, warning=FALSE, results='hide', message=FALSE}
+#install.packages("tidyverse")
+#install.packages("naniar") # used to work with missing data
+#install.packages("fuzzyjoin")  # Merging messy data
+#install.packages("gt")
+#install.packages("data.table")
+#library(naniar) # used to work with missing data
+```
+
+Load the libraries
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -72,9 +89,9 @@ Today, we're going to work on tidying 2 separate datasets; which we will then me
 ```{r data_upload}
 
 # Data Batch 1
-scotch_reviews <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/scotch_review_manual_clean.csv"))
+scotch_reviews <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/RMD_file_data/scotch_review_manual_clean.csv"))
 
-List_of_whisky_distilleries_in_Scotland <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/List_of_whisky_distilleries_in_Scotland_manual_clean.csv"))
+List_of_whisky_distilleries_in_Scotland <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/RMD_file_data/List_of_whisky_distilleries_in_Scotland_manual_clean.csv"))
 
 
 
@@ -383,7 +400,7 @@ We are going to see how to use this to extract information about all our text la
 
 All our .txt files are in a directory named Account so I can write a function that will loop through each of the files extract the text and the tile of each file and put them all in a table. Doing it manually would take a ridiculous amount of time but that is what computer are for so let's see what we can do.
 
-### 1. Create a new object that contain the path to our directory 
+### 1. Create a new object that contain the path to our directory
 
 ```{r,results=FALSE}
 text_files_dir <- "data/Accounts"
@@ -494,10 +511,16 @@ However makes for awful communication with non-nerds/non-computers/people in gen
 
 To demonstrate, we are going to create a stratified summary table of our merged whisky dataset. We will divide the whiskies into two groups - Oldest Whiskies, and Newest Whiskies, and stratify the results by these groups. We will also stratify by Region within this new Age grouping, and rank the presentation by number of whiskies per region... so a lot of different challenges to manage!
 
+A quick histogram of the `Founded` variable from the whisky dataset shows an abrupt stop in new distilleries from 1900, which then reemerges towards the 1950's. Historically, this abrupt stop has been attributed [to the Pattinson Whisky crash of 1898, but also to other factors of the time, including oversupply and two world wars](https://www.edinburghwhiskyacademy.com/blogs/feature/the-1898-pattison-crash-and-50-difficult-years-for-scotch). It's very interesting to see the influence of this difficult time to the whisky industry so clearly in the data! You might also notice a peak in Distilleries being "Founded" in the 1820's. This aligns with the ["Excise Act of 1823"](https://www.whisky.com/the-history-of-whisky.html), where the production of Whisky was finally legalised in the UK. It seems very likely that this rapid emergence was the result of Bandit/Smuggler distilleries quickly trying to formalise themselves as legal producers.
+
+As the Whisky industry is enschrined in romanticism of its products, let's investigate how the age grouping of these distilleries has influenced the pricing of their whiskies.
+
 ```{r, preparing_data}
 
+hist(df_merge$Founded)
+
 summary_data <- df_merge %>% 
-  mutate(Old_v_new = case_when(Founded <= 1900 ~ "Old Distilleries", #creating an infamous median split...
+  mutate(Old_v_new = case_when(Founded <= 1900 ~ "Old Distilleries", 
                                Founded > 1900 ~ "New Distilleries")) %>%
   group_by(Old_v_new, Region) %>% # stratifying data by two levels
   summarise(n_per_strata = n(),

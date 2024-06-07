@@ -4,30 +4,53 @@ author: "DCS"
 date: "`r Sys.Date()`"
 output: word_document
 ---
+### Install the Libraries 
 
+On Noteable
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 #install.packages("ggplot2", dependencies = TRUE) #This needs to run first, so that `interactions` will work.
-
+#install.packages("easystats")
+#install.packages("sjPlot")
 #install.packages("correlation")
 #install.packages("report")
 #install.packages("interactions")
 #install.packages( "naniar")
-install.packages("flextable")
+#install.packages("flextable")
+```
 
+On Posit
+```{r setup2, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#install.packages("tidyverse") #Only if not there already
+#install.packages("easystats")
+#install.packages("broom")
+#install.packages("gt")
+#install.packages("gt")
+#install.packages("sjPlot")
+#install.packages("correlation")
+#install.packages("report")
+#install.packages("interactions")
+#install.packages( "naniar")
+#install.packages("flextable")
+#install.packages("Jtools")
+```
 
+### Load the libraries
+```{r, setup_2, include=FALSE, echo = FALSE}
 library(tidyverse) # data tidying
 library(broom) # tidy analysis outputs
 library(gt) # pretty tables
+library(easystats) # A package of useful stats packages! 
 library(correlation) # easy correlation tables
-library(gtsummary) # easy stratified tables
 library(report) # prints a standardised analysis report of your model (in APA)
 library(interactions) # make fancy interaction analyses easier
 library(naniar) # Missing data analysis
 library(readr) # read csv files
 library(flextable)
+library(jtools)
 
-tidied_whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/tidied_whisky_data.csv")) %>% 
+tidied_whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/RMD_file_data/tidied_whisky_data.csv")) %>% 
   mutate(
          # Wrangle your new variable here
          ) %>%
@@ -221,7 +244,8 @@ interact_plot(m_int,
               plot.points = TRUE,
              # colors = "CUD Bright",
               jitter = TRUE
-              )
+              ) +
+theme_dark()
 
 ```
 
@@ -304,7 +328,7 @@ Generalized linear models are fit using the `glm( )` function. The form of the g
 
 ```
 
-Meanwhile, the table below gives an overview of the `glm()` family commands along with their associated link functions.
+Meanwhile, the table below gives an overview of the `glm()` family commands along with their associated link functions. To make the table,we will be using the `gt()` functions once again, as `gt()` makes things pretty and readable.
 
 ```{r glm_family_table}
 Family <- c("binomial", "gaussian", "Gamma", "inverse.gaussian", "poisson", "quasi", "quasibinomial", "quasipoisson")	
@@ -374,3 +398,5 @@ plot_model(model = m ,
 plot(m)
 
 ```
+
+### This is the end of this block

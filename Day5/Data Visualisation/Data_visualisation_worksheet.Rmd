@@ -9,28 +9,48 @@ output:
     toc_float: 
       collapsed: TRUE
 ---
+### Installation and Setup
 
-```{r setup, include=FALSE}
+Install on Noteable
+```{r InstallNoteable, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 install.packages('ggthemes')
 install.packages('wesanderson')
 install.packages('sjPlot')
+```
 
-## These are some recomeneded packages. Feel free to add more!
+Install on Posit
+```{r Install Posit, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+install.packages('tidyverse')#Only if not there anymore
+install.packages('ggpubr')#Only if not there anymore
+install.packages('ggthemes')
+install.packages('gghalves')#Only if not there anymore
+install.packages('gt')#Only if not there anymore
+install.packages('ggridges')
+install.packages('ggsci')
+install.packages('extrafont')
+install.packages('wesanderson')
+install.packages('sjPlot')
+```
+
+Load libraries and import data
+```{r setup, include=FALSE}
+## These are some recommended packages. Feel free to add more!
 library(tidyverse) #data wrangling and ggplot
 library(ggpubr) # additional ggplot options
 library(ggthemes) #additional ggplot themes
 library(gghalves) # fancy half plots
 library(ggridges) #ridge plots
-library(ggsci) # color palletes for journals. Warning - this pallete drops NA's
-library(wesanderson) # Wes Anderson inspired color pallete. 
+library(ggsci) # color palettes for journals. Warning - this palette drops NA's
+library(wesanderson) # Wes Anderson inspired color palette. 
 library(extrafont) #additional fonts
 library(readr) # read csv
 library(gt) #pretty tables
-library(sjPlot) # statistical model plots made easy!
 
-Whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/tidied_whisky_data.csv")) %>%
+
+Whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/RMD_file_data/tidied_whisky_data.csv")) %>%
   mutate_if(is.character, as.factor)
 
 ```

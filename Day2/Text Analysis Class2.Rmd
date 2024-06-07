@@ -16,13 +16,22 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Before we start playing around we need to install the needed packages and load all the packages we need for the session
 
-```{r Install Packages, results='hide'}
+On Noteable
+
+```{r Install Packages, results='hide',warning=FALSE, message=FALSE}
 #install.packages("tm") # Text analysis package for corpus creation, cleaning, creation of document matrices, etc.
 #install.packages("topicmodels") #Ready-to-use topic modelling tools and models
-
 ```
 
-```{r Load Packages, echo=FALSE, results='hide}
+On Posit
+
+```{r Install Packages Posit, results='hide', warning=FALSE, message=FALSE}
+#install.packages("tidyverse")#only if not on the server already from yesterday
+#install.packages("tm") # Text analysis package for corpus creation, cleaning, creation of document matrices, etc.
+#install.packages("topicmodels") #Ready-to-use topic modelling tools and models
+```
+
+```{r Load Packages, echo=FALSE, results='hide', warning=FALSE, comment=FALSE}
 library(tidyverse)
 library(tm)
 library(topicmodels)
@@ -296,4 +305,4 @@ Hint: You can copy and paste the code above and modify it to subset a different 
 1.  What are the pros and cons of the methods we have used in this block?
 2.  What can text analysis tell us about datasets? What information do we not have? How could we find it?
 
-## The End
+## End of the Text Analysis day
