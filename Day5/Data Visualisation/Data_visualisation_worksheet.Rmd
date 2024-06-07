@@ -28,7 +28,7 @@ library(wesanderson) # Wes Anderson inspired color pallete.
 library(extrafont) #additional fonts
 library(readr) # read csv
 library(gt) #pretty tables
-library(sjPlot) # statistical model plots made easy!
+
 
 Whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/RMD_file_data/tidied_whisky_data.csv")) %>%
   mutate_if(is.character, as.factor)
