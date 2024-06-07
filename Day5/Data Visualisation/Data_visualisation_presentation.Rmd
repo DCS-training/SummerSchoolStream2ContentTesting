@@ -17,14 +17,10 @@ library(extrafont) #additional fonts - will not work in noteable, but useful for
 
 library(tidyverse) # data tidying
 library(plotly) # interactive plot
-library(gghalves) # half plots - useful for distributions
+library(gghalves) # half plots - useful for layering distribution plots
 
 
-
-Whisky_data <- rread_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/tidied_whisky_data.csv")) %>%
-  mutate_if(is.character, as.factor)
-
-Whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/DataWrangling/RMD_file_data/tidied_whisky_data.csv")) %>%
+Whisky_data <- read_csv(url("https://raw.github.com/DCS-training/SummerSchoolStream2ContentTesting/main/Day1/RMD_file_data/tidied_whisky_data.csv")) %>%
   mutate_if(is.character, as.factor)
 
 ```
