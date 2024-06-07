@@ -10,6 +10,7 @@ output: html_document
 On Noteable
 
 ```{r Install, warning=FALSE, results='hide', message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 #install.packages("naniar") # used to work with missing data
 #install.packages("fuzzyjoin")  # Merging messy data
 #install.packages("gt")
@@ -19,6 +20,7 @@ On Noteable
 On Posit
 
 ```{r Install2, warning=FALSE, results='hide', message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 #install.packages("tidyverse")
 #install.packages("naniar") # used to work with missing data
 #install.packages("fuzzyjoin")  # Merging messy data
@@ -30,7 +32,7 @@ On Posit
 Load the libraries
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
 
 library(readr) # used to read in csv data
 library(tidyverse) # very useful data tidying and visualising package of packages
