@@ -36,7 +36,7 @@ Load the libraries
 
 library(readr) # used to read in csv data
 library(tidyverse) # very useful data tidying and visualising package of packages
-#library(naniar) # used to work with missing data
+library(naniar) # used to work with missing data
 library(fuzzyjoin) # Merging messy data
 library(data.table)# working with tables
 library(gt) # used to make pretty tables
