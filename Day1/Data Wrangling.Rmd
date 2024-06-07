@@ -16,7 +16,7 @@ On Noteable
 
 ```
 
-On Noteable
+On Posit
 
 ```{r Install2, warning=FALSE, results='hide', message=FALSE}
 #install.packages("tidyverse")
@@ -24,7 +24,7 @@ On Noteable
 #install.packages("fuzzyjoin")  # Merging messy data
 #install.packages("gt")
 #install.packages("data.table")
-#library(naniar) # used to work with missing data
+
 ```
 
 Load the libraries
