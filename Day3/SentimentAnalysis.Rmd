@@ -48,6 +48,7 @@ On Noteable
 #install.packages("tidytext") # Text Analysis 
 #install.packages("Polychrome") # Palette
 #install.packages("wordcloud")# wordcloud
+#install.packages("remotes")
 #remotes::install_github("quanteda/quanteda.sentiment")#3
 ```
 
