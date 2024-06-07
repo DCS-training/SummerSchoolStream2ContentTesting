@@ -494,10 +494,14 @@ However makes for awful communication with non-nerds/non-computers/people in gen
 
 To demonstrate, we are going to create a stratified summary table of our merged whisky dataset. We will divide the whiskies into two groups - Oldest Whiskies, and Newest Whiskies, and stratify the results by these groups. We will also stratify by Region within this new Age grouping, and rank the presentation by number of whiskies per region... so a lot of different challenges to manage!
 
+A quick histogram of the `Founded` variable from the whisky dataset shows an abrupt stop in new distilleries from 1900, which then reemerges towards the 1950's. Historically, this abrupt stop has been attributed [to the Pattinson Whisky crash of 1898, but also to other factors of the time, including oversupply and two world wars](https://www.edinburghwhiskyacademy.com/blogs/feature/the-1898-pattison-crash-and-50-difficult-years-for-scotch). It's very interesting to see the influence of this difficult time to the whisky industry so clearly in the data! For today, let's investigate how the age grouping of these distilleries has influenced the pricing of their whiskies. 
+
 ```{r, preparing_data}
 
+hist(df_merge$Founded)
+
 summary_data <- df_merge %>% 
-  mutate(Old_v_new = case_when(Founded <= 1900 ~ "Old Distilleries", #creating an infamous median split...
+  mutate(Old_v_new = case_when(Founded <= 1900 ~ "Old Distilleries", 
                                Founded > 1900 ~ "New Distilleries")) %>%
   group_by(Old_v_new, Region) %>% # stratifying data by two levels
   summarise(n_per_strata = n(),
